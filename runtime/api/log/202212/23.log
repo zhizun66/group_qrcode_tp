@@ -1,0 +1,170 @@
+[2022-12-23T00:44:28+08:00][sql] CONNECT:[ UseTime:0.122242s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T00:44:28+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.123873s ]
+[2022-12-23T00:44:28+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.100956s ]
+[2022-12-23T00:44:28+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.121835s ]
+[2022-12-23T00:44:28+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `uin` = '1688850354102496'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.085128s ]
+[2022-12-23T00:44:32+08:00][sql] CONNECT:[ UseTime:0.239703s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T00:44:32+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.111674s ]
+[2022-12-23T00:44:32+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.103423s ]
+[2022-12-23T00:44:32+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.189843s ]
+[2022-12-23T00:44:32+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `status` = 1  AND `uin` = '1688850354102496'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.120821s ]
+[2022-12-23T00:45:25+08:00][sql] CONNECT:[ UseTime:0.119382s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T00:45:25+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.084378s ]
+[2022-12-23T00:45:25+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.080546s ]
+[2022-12-23T00:45:25+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.098843s ]
+[2022-12-23T00:45:25+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `uin` = '1688850354102496'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.088349s ]
+[2022-12-23T00:45:25+08:00][sql] CONNECT:[ UseTime:0.142184s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T00:45:25+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.110446s ]
+[2022-12-23T00:45:25+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.105933s ]
+[2022-12-23T00:45:25+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.102935s ]
+[2022-12-23T00:45:25+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `uin` = '1688855912392048'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.684817s ]
+[2022-12-23T00:45:25+08:00][sql] CONNECT:[ UseTime:0.174110s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T00:45:25+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.106744s ]
+[2022-12-23T00:45:25+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.097736s ]
+[2022-12-23T00:45:25+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.098476s ]
+[2022-12-23T00:45:25+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `status` = 1  AND `uin` = '1688850354102496'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.092660s ]
+[2022-12-23T00:45:28+08:00][sql] CONNECT:[ UseTime:0.127378s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T00:45:28+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.085739s ]
+[2022-12-23T00:45:28+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.065739s ]
+[2022-12-23T00:45:28+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.097550s ]
+[2022-12-23T00:45:28+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `status` = 1  AND `uin` = '1688850354102496'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.090585s ]
+[2022-12-23T00:47:13+08:00][sql] CONNECT:[ UseTime:0.161736s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T00:47:13+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.099866s ]
+[2022-12-23T00:47:13+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.096847s ]
+[2022-12-23T00:47:13+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.100255s ]
+[2022-12-23T00:47:13+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `uin` = '1688855912392048'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.093636s ]
+[2022-12-23T00:47:14+08:00][sql] CONNECT:[ UseTime:0.140991s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T00:47:14+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.103238s ]
+[2022-12-23T00:47:14+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.089849s ]
+[2022-12-23T00:47:14+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.153890s ]
+[2022-12-23T00:47:14+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `uin` = '1688850354102496'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.094482s ]
+[2022-12-23T00:47:14+08:00][sql] CONNECT:[ UseTime:0.164521s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T00:47:14+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.099129s ]
+[2022-12-23T00:47:14+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.115833s ]
+[2022-12-23T00:47:14+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.119277s ]
+[2022-12-23T00:47:14+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `status` = 1  AND `uin` = '1688850354102496'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.107325s ]
+[2022-12-23T00:47:17+08:00][sql] CONNECT:[ UseTime:0.121604s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T00:47:17+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.082390s ]
+[2022-12-23T00:47:17+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.079453s ]
+[2022-12-23T00:47:17+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.083541s ]
+[2022-12-23T00:47:17+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `status` = 1  AND `uin` = '1688850354102496'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.088176s ]
+[2022-12-23T00:48:51+08:00][sql] CONNECT:[ UseTime:0.155081s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T00:48:51+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.106748s ]
+[2022-12-23T00:48:51+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.098592s ]
+[2022-12-23T00:48:51+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.102724s ]
+[2022-12-23T00:48:51+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `uin` = '1688855912392048'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.100155s ]
+[2022-12-23T00:48:51+08:00][sql] CONNECT:[ UseTime:0.151163s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T00:48:51+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.097576s ]
+[2022-12-23T00:48:51+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.100348s ]
+[2022-12-23T00:48:51+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.092357s ]
+[2022-12-23T00:48:51+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `uin` = '1688850354102496'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.088742s ]
+[2022-12-23T00:48:52+08:00][sql] CONNECT:[ UseTime:0.140944s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T00:48:52+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.096678s ]
+[2022-12-23T00:48:52+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.092785s ]
+[2022-12-23T00:48:52+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.137434s ]
+[2022-12-23T00:48:52+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `status` = 1  AND `uin` = '1688855912392048'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.674391s ]
+[2022-12-23T00:48:55+08:00][sql] CONNECT:[ UseTime:0.142870s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T00:48:55+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.102522s ]
+[2022-12-23T00:48:55+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.124848s ]
+[2022-12-23T00:48:55+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.097264s ]
+[2022-12-23T00:48:55+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `status` = 1  AND `uin` = '1688850354102496'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.091805s ]
+[2022-12-23T00:57:37+08:00][sql] CONNECT:[ UseTime:0.135808s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T00:57:37+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.088212s ]
+[2022-12-23T00:57:37+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.084861s ]
+[2022-12-23T00:57:37+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.090379s ]
+[2022-12-23T00:57:37+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `uin` = '1688850354102496'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.529827s ]
+[2022-12-23T00:57:38+08:00][sql] CONNECT:[ UseTime:0.135161s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T00:57:38+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.088689s ]
+[2022-12-23T00:57:38+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.088726s ]
+[2022-12-23T00:57:38+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.094542s ]
+[2022-12-23T00:57:38+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `status` = 1  AND `uin` = '1688850354102496'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.381699s ]
+[2022-12-23T00:57:47+08:00][sql] CONNECT:[ UseTime:0.127891s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T00:57:47+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.090655s ]
+[2022-12-23T00:57:47+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.095600s ]
+[2022-12-23T00:57:47+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.095264s ]
+[2022-12-23T00:57:47+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `uin` = '1688855912392048'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.453862s ]
+[2022-12-23T00:57:48+08:00][sql] CONNECT:[ UseTime:0.126373s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T00:57:48+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.078747s ]
+[2022-12-23T00:57:48+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.080477s ]
+[2022-12-23T00:57:48+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.086536s ]
+[2022-12-23T00:57:48+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `status` = 1  AND `uin` = '1688855912392048'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.396685s ]
+[2022-12-23T00:59:02+08:00][sql] CONNECT:[ UseTime:0.123748s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T00:59:02+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.095515s ]
+[2022-12-23T00:59:02+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.083614s ]
+[2022-12-23T00:59:02+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.085044s ]
+[2022-12-23T00:59:02+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `uin` = '1688855912392048'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.082952s ]
+[2022-12-23T00:59:04+08:00][sql] CONNECT:[ UseTime:0.115792s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T00:59:04+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.084162s ]
+[2022-12-23T00:59:04+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.080660s ]
+[2022-12-23T00:59:04+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.083899s ]
+[2022-12-23T00:59:04+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `status` = 1  AND `uin` = '1688855912392048'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.084151s ]
+[2022-12-23T01:00:08+08:00][sql] CONNECT:[ UseTime:0.159114s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T01:00:08+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.101378s ]
+[2022-12-23T01:00:08+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.095005s ]
+[2022-12-23T01:00:08+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.094316s ]
+[2022-12-23T01:00:08+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `uin` = '1688855912392048'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.093101s ]
+[2022-12-23T01:00:09+08:00][sql] CONNECT:[ UseTime:0.141233s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T01:00:09+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.095928s ]
+[2022-12-23T01:00:09+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.083617s ]
+[2022-12-23T01:00:09+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.097922s ]
+[2022-12-23T01:00:09+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `status` = 1  AND `uin` = '1688855912392048'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.082143s ]
+[2022-12-23T01:02:05+08:00][sql] CONNECT:[ UseTime:0.130352s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T01:02:05+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.112583s ]
+[2022-12-23T01:02:05+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.083188s ]
+[2022-12-23T01:02:05+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.088659s ]
+[2022-12-23T01:02:05+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `uin` = '1688855912392048'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.089895s ]
+[2022-12-23T01:02:05+08:00][sql] CONNECT:[ UseTime:0.134631s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T01:02:05+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.095322s ]
+[2022-12-23T01:02:05+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.082864s ]
+[2022-12-23T01:02:05+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.091792s ]
+[2022-12-23T01:02:05+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `status` = 1  AND `uin` = '1688855912392048'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.098360s ]
+[2022-12-23T19:06:06+08:00][sql] CONNECT:[ UseTime:0.149510s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T19:06:06+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.085976s ]
+[2022-12-23T19:06:06+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.077699s ]
+[2022-12-23T19:06:06+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.099338s ]
+[2022-12-23T19:06:06+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `uin` = '1688855912392048'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.424112s ]
+[2022-12-23T19:06:08+08:00][sql] CONNECT:[ UseTime:0.116553s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T19:06:08+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.086916s ]
+[2022-12-23T19:06:08+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.088190s ]
+[2022-12-23T19:06:08+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.099061s ]
+[2022-12-23T19:06:08+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `status` = 1  AND `uin` = '1688855912392048'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.436677s ]
+[2022-12-23T19:08:33+08:00][sql] CONNECT:[ UseTime:0.141455s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T19:08:33+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.084027s ]
+[2022-12-23T19:08:33+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.091789s ]
+[2022-12-23T19:08:33+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.084794s ]
+[2022-12-23T19:08:33+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `uin` = '1688855912392048'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.502687s ]
+[2022-12-23T19:08:34+08:00][sql] CONNECT:[ UseTime:0.099966s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T19:08:34+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.069199s ]
+[2022-12-23T19:08:34+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.066351s ]
+[2022-12-23T19:08:34+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.131680s ]
+[2022-12-23T19:08:34+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `status` = 1  AND `uin` = '1688855912392048'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.451231s ]
+[2022-12-23T19:09:41+08:00][sql] CONNECT:[ UseTime:0.130964s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T19:09:41+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.079833s ]
+[2022-12-23T19:09:41+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.080405s ]
+[2022-12-23T19:09:41+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.081961s ]
+[2022-12-23T19:09:41+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `uin` = '1688855912392048'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.432031s ]
+[2022-12-23T19:09:42+08:00][sql] CONNECT:[ UseTime:0.138908s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T19:09:42+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.083477s ]
+[2022-12-23T19:09:42+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.083384s ]
+[2022-12-23T19:09:42+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.086604s ]
+[2022-12-23T19:09:42+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `status` = 1  AND `uin` = '1688855912392048'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.487733s ]
+[2022-12-23T23:53:41+08:00][sql] CONNECT:[ UseTime:0.208459s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T23:53:41+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.112065s ]
+[2022-12-23T23:53:41+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.124837s ]
+[2022-12-23T23:53:41+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.108016s ]
+[2022-12-23T23:53:41+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `uin` = '1688856345386605'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.723287s ]
+[2022-12-23T23:53:43+08:00][sql] CONNECT:[ UseTime:0.116195s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T23:53:43+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.087809s ]
+[2022-12-23T23:53:43+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.075461s ]
+[2022-12-23T23:53:43+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.098389s ]
+[2022-12-23T23:53:43+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `status` = 1  AND `uin` = '1688856345386605'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.722645s ]
+[2022-12-23T23:59:10+08:00][sql] CONNECT:[ UseTime:0.113459s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T23:59:10+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.081011s ]
+[2022-12-23T23:59:10+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.079055s ]
+[2022-12-23T23:59:10+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.125526s ]
+[2022-12-23T23:59:10+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `uin` = '1688856345386605'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.458446s ]
+[2022-12-23T23:59:13+08:00][sql] CONNECT:[ UseTime:0.131551s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-23T23:59:13+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.080070s ]
+[2022-12-23T23:59:13+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.081539s ]
+[2022-12-23T23:59:13+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.079751s ]
+[2022-12-23T23:59:13+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `status` = 1  AND `uin` = '1688856345386605'  AND `add_time` BETWEEN '2022-12-23 00:00:00' AND '2022-12-23 23:59:59' LIMIT 1 [ RunTime:0.475607s ]

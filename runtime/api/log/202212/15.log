@@ -1,0 +1,100 @@
+[2022-12-15T15:47:01+08:00][sql] CONNECT:[ UseTime:0.126650s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-15T15:47:01+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.091114s ]
+[2022-12-15T15:47:01+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.094192s ]
+[2022-12-15T15:47:01+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.088745s ]
+[2022-12-15T15:47:01+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_entrance` WHERE  `members` BETWEEN 80 AND 190   AND `joinable` = 1  AND `status` = 1  AND `join_time` < 1671068821  AND `expire_date` >= NOW() LIMIT 1 [ RunTime:0.134303s ]
+[2022-12-15T15:47:40+08:00][sql] CONNECT:[ UseTime:0.130350s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-15T15:47:40+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.093294s ]
+[2022-12-15T15:47:40+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.088432s ]
+[2022-12-15T15:47:40+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.093835s ]
+[2022-12-15T15:47:40+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_entrance` WHERE  `members` BETWEEN 80 AND 190   AND `joinable` = 1  AND `status` = 1  AND `expire_date` >= NOW() LIMIT 1 [ RunTime:0.117077s ]
+[2022-12-15T16:25:15+08:00][sql] CONNECT:[ UseTime:0.130600s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-15T16:25:15+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.089741s ]
+[2022-12-15T16:25:15+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.087564s ]
+[2022-12-15T16:25:15+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.089961s ]
+[2022-12-15T16:25:15+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_entrance` WHERE  `members` BETWEEN 80 AND 190   AND `joinable` = 1  AND `status` = 1  AND `join_time` < 1671071114  AND `expire_date` >= NOW() LIMIT 1 [ RunTime:0.122229s ]
+[2022-12-15T16:31:35+08:00][sql] CONNECT:[ UseTime:0.142182s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-15T16:31:35+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.110856s ]
+[2022-12-15T16:31:35+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.096537s ]
+[2022-12-15T16:31:35+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.098623s ]
+[2022-12-15T16:31:35+08:00][sql] SELECT `name`,`qrcode_id` FROM `wk_entrance` WHERE  `name` LIKE '%警%' [ RunTime:0.124752s ]
+[2022-12-15T16:32:40+08:00][sql] CONNECT:[ UseTime:0.136977s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-15T16:32:40+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.098832s ]
+[2022-12-15T16:32:40+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.092184s ]
+[2022-12-15T16:32:40+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.096235s ]
+[2022-12-15T16:32:40+08:00][sql] SELECT `name`,`qrcode_id` FROM `wk_entrance` WHERE  `name` LIKE '%军队%' [ RunTime:0.139431s ]
+[2022-12-15T16:32:56+08:00][sql] CONNECT:[ UseTime:0.135901s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-15T16:32:56+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.095120s ]
+[2022-12-15T16:32:56+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.091093s ]
+[2022-12-15T16:32:56+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.101413s ]
+[2022-12-15T16:32:56+08:00][sql] SELECT `name`,`qrcode_id` FROM `wk_entrance` WHERE  `name` LIKE '%军队%' [ RunTime:0.150093s ]
+[2022-12-15T16:55:34+08:00][sql] CONNECT:[ UseTime:0.139596s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-15T16:55:34+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.098457s ]
+[2022-12-15T16:55:34+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.094882s ]
+[2022-12-15T16:55:34+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.099729s ]
+[2022-12-15T16:55:34+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_entrance` WHERE  `members` BETWEEN 80 AND 190   AND `joinable` = 1  AND `status` = 1  AND `join_time` < 1671072933  AND `expire_date` >= NOW() LIMIT 1 [ RunTime:0.135692s ]
+[2022-12-15T16:55:56+08:00][sql] CONNECT:[ UseTime:0.156001s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-15T16:55:56+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.107528s ]
+[2022-12-15T16:55:56+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.102846s ]
+[2022-12-15T16:55:56+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.106861s ]
+[2022-12-15T16:55:56+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_entrance` WHERE  `members` BETWEEN 80 AND 190   AND `joinable` = 1  AND `status` = 1  AND `join_time` < 1671072956  AND `expire_date` >= NOW() LIMIT 1 [ RunTime:0.152123s ]
+[2022-12-15T16:56:13+08:00][sql] CONNECT:[ UseTime:0.130534s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-15T16:56:13+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.094023s ]
+[2022-12-15T16:56:13+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.088139s ]
+[2022-12-15T16:56:13+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.093741s ]
+[2022-12-15T16:56:13+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_entrance` WHERE  `members` BETWEEN 80 AND 190   AND `joinable` = 1  AND `status` = 1  AND `expire_date` >= NOW() LIMIT 1 [ RunTime:0.138538s ]
+[2022-12-15T16:56:40+08:00][sql] CONNECT:[ UseTime:0.141357s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-15T16:56:40+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.096470s ]
+[2022-12-15T16:56:40+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.094046s ]
+[2022-12-15T16:56:40+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.096648s ]
+[2022-12-15T16:56:40+08:00][sql] SELECT `name`,`qrcode_id` FROM `wk_entrance` WHERE  `name` LIKE '%中原区卫生健康委员会交流群%' [ RunTime:0.136304s ]
+[2022-12-15T18:24:39+08:00][sql] CONNECT:[ UseTime:0.138203s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-15T18:24:39+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.095523s ]
+[2022-12-15T18:24:39+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.091954s ]
+[2022-12-15T18:24:39+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.095983s ]
+[2022-12-15T18:24:39+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_entrance` WHERE  `members` BETWEEN 80 AND 190   AND `joinable` = 1  AND `status` = 1  AND `expire_date` >= NOW() LIMIT 1 [ RunTime:0.128046s ]
+[2022-12-15T18:25:02+08:00][sql] CONNECT:[ UseTime:0.139017s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-15T18:25:02+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.095965s ]
+[2022-12-15T18:25:02+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.096361s ]
+[2022-12-15T18:25:02+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.100083s ]
+[2022-12-15T18:25:02+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_entrance` WHERE  `members` BETWEEN 80 AND 190   AND `joinable` = 1  AND `status` = 1  AND `join_time` < 1671078302  AND `expire_date` >= NOW() LIMIT 1 [ RunTime:0.161065s ]
+[2022-12-15T18:25:19+08:00][sql] CONNECT:[ UseTime:0.158927s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-15T18:25:19+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.111337s ]
+[2022-12-15T18:25:19+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.106357s ]
+[2022-12-15T18:25:19+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.108112s ]
+[2022-12-15T18:25:19+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_entrance` WHERE  `members` BETWEEN 80 AND 190   AND `joinable` = 1  AND `status` = 1  AND `join_time` < 1671078318  AND `expire_date` >= NOW() LIMIT 1 [ RunTime:0.143987s ]
+[2022-12-15T18:26:21+08:00][sql] CONNECT:[ UseTime:0.160678s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-15T18:26:21+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.107519s ]
+[2022-12-15T18:26:21+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.102664s ]
+[2022-12-15T18:26:21+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.106273s ]
+[2022-12-15T18:26:21+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_entrance` WHERE  `members` BETWEEN 80 AND 190   AND `joinable` = 1  AND `status` = 1  AND `join_time` < 1671078381  AND `expire_date` >= NOW() LIMIT 1 [ RunTime:0.133312s ]
+[2022-12-15T18:26:33+08:00][sql] CONNECT:[ UseTime:0.142867s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-15T18:26:33+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.099829s ]
+[2022-12-15T18:26:33+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.097668s ]
+[2022-12-15T18:26:33+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.098851s ]
+[2022-12-15T18:26:33+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_entrance` WHERE  `members` BETWEEN 80 AND 190   AND `joinable` = 1  AND `status` = 1  AND `join_time` < 1671078393  AND `expire_date` >= NOW() LIMIT 1 [ RunTime:0.125096s ]
+[2022-12-15T21:24:51+08:00][sql] CONNECT:[ UseTime:0.151065s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-15T21:24:51+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.104149s ]
+[2022-12-15T21:24:51+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.106249s ]
+[2022-12-15T21:24:51+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.104785s ]
+[2022-12-15T21:24:51+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_entrance` WHERE  `members` BETWEEN 80 AND 190   AND `joinable` = 1  AND `status` = 1  AND `join_time` < 1671089091  AND `expire_date` >= NOW() LIMIT 1 [ RunTime:0.150884s ]
+[2022-12-15T21:25:02+08:00][sql] CONNECT:[ UseTime:0.149788s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-15T21:25:02+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.109887s ]
+[2022-12-15T21:25:02+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.100657s ]
+[2022-12-15T21:25:02+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.111563s ]
+[2022-12-15T21:25:02+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_entrance` WHERE  `members` BETWEEN 80 AND 190   AND `joinable` = 1  AND `status` = 1  AND `expire_date` >= NOW() LIMIT 1 [ RunTime:0.189035s ]
+[2022-12-15T23:46:25+08:00][sql] CONNECT:[ UseTime:0.150078s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-15T23:46:25+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.107298s ]
+[2022-12-15T23:46:25+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.101219s ]
+[2022-12-15T23:46:25+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.106327s ]
+[2022-12-15T23:46:25+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_entrance` WHERE  `members` BETWEEN 80 AND 190   AND `joinable` = 1  AND `status` = 1  AND `expire_date` >= NOW() LIMIT 1 [ RunTime:0.151726s ]
+[2022-12-15T23:46:50+08:00][sql] CONNECT:[ UseTime:0.121286s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-15T23:46:50+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.084814s ]
+[2022-12-15T23:46:50+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.081481s ]
+[2022-12-15T23:46:50+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.087702s ]
+[2022-12-15T23:46:50+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_entrance` WHERE  `members` BETWEEN 60 AND 190   AND `joinable` = 1  AND `status` = 1  AND `expire_date` >= NOW() LIMIT 1 [ RunTime:0.159974s ]
+[2022-12-15T23:47:00+08:00][sql] CONNECT:[ UseTime:0.140026s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-15T23:47:00+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.098316s ]
+[2022-12-15T23:47:00+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.101379s ]
+[2022-12-15T23:47:00+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.099323s ]
+[2022-12-15T23:47:00+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_entrance` WHERE  `members` BETWEEN 60 AND 195   AND `joinable` = 1  AND `status` = 1  AND `expire_date` >= NOW() LIMIT 1 [ RunTime:0.149549s ]

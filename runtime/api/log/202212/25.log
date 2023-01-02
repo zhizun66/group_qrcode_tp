@@ -1,0 +1,30 @@
+[2022-12-25T16:45:05+08:00][sql] CONNECT:[ UseTime:0.158501s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-25T16:45:05+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.087644s ]
+[2022-12-25T16:45:05+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.082594s ]
+[2022-12-25T16:45:05+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.098543s ]
+[2022-12-25T16:45:05+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `uin` = '1688856345386605'  AND `add_time` BETWEEN '2022-12-25 00:00:00' AND '2022-12-25 23:59:59' LIMIT 1 [ RunTime:0.510859s ]
+[2022-12-25T16:45:06+08:00][sql] CONNECT:[ UseTime:0.129548s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-25T16:45:06+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.084697s ]
+[2022-12-25T16:45:06+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.094527s ]
+[2022-12-25T16:45:06+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.084323s ]
+[2022-12-25T16:45:06+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `status` = 1  AND `uin` = '1688856345386605'  AND `add_time` BETWEEN '2022-12-25 00:00:00' AND '2022-12-25 23:59:59' LIMIT 1 [ RunTime:0.418135s ]
+[2022-12-25T17:07:47+08:00][sql] CONNECT:[ UseTime:0.145008s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-25T17:07:47+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.092323s ]
+[2022-12-25T17:07:47+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.083284s ]
+[2022-12-25T17:07:47+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.088265s ]
+[2022-12-25T17:07:47+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `uin` = '1688856345386605'  AND `add_time` BETWEEN '2022-12-25 00:00:00' AND '2022-12-25 23:59:59' LIMIT 1 [ RunTime:0.436579s ]
+[2022-12-25T17:07:51+08:00][sql] CONNECT:[ UseTime:0.135203s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-25T17:07:51+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.093480s ]
+[2022-12-25T17:07:51+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.087565s ]
+[2022-12-25T17:07:51+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.107190s ]
+[2022-12-25T17:07:51+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `status` = 1  AND `uin` = '1688856345386605'  AND `add_time` BETWEEN '2022-12-25 00:00:00' AND '2022-12-25 23:59:59' LIMIT 1 [ RunTime:0.505062s ]
+[2022-12-25T17:08:39+08:00][sql] CONNECT:[ UseTime:0.112185s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-25T17:08:39+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.074658s ]
+[2022-12-25T17:08:39+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.072488s ]
+[2022-12-25T17:08:39+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.079598s ]
+[2022-12-25T17:08:39+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `uin` = '1688856345386605'  AND `add_time` BETWEEN '2022-12-25 00:00:00' AND '2022-12-25 23:59:59' LIMIT 1 [ RunTime:0.463480s ]
+[2022-12-25T17:08:41+08:00][sql] CONNECT:[ UseTime:0.158519s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-25T17:08:41+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.102809s ]
+[2022-12-25T17:08:41+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.088926s ]
+[2022-12-25T17:08:41+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.088850s ]
+[2022-12-25T17:08:41+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `status` = 1  AND `uin` = '1688856345386605'  AND `add_time` BETWEEN '2022-12-25 00:00:00' AND '2022-12-25 23:59:59' LIMIT 1 [ RunTime:0.429245s ]

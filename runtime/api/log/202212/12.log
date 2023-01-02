@@ -1,0 +1,10 @@
+[2022-12-12T00:41:22+08:00][sql] CONNECT:[ UseTime:0.144439s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-12T00:41:22+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.102853s ]
+[2022-12-12T00:41:22+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.097368s ]
+[2022-12-12T00:41:22+08:00][sql] SHOW FULL COLUMNS FROM `wk_qrcode` [ RunTime:0.102206s ]
+[2022-12-12T00:41:22+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_qrcode` WHERE  `provider_id` = 2  AND `valid` = 1 LIMIT 1 [ RunTime:0.111381s ]
+[2022-12-12T16:14:30+08:00][sql] CONNECT:[ UseTime:0.135310s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-12T16:14:30+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.093154s ]
+[2022-12-12T16:14:30+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.091674s ]
+[2022-12-12T16:14:30+08:00][sql] SHOW FULL COLUMNS FROM `wk_qrcode` [ RunTime:0.101328s ]
+[2022-12-12T16:14:30+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_qrcode` WHERE  `provider_id` = 2  AND `valid` = 1 LIMIT 1 [ RunTime:0.098738s ]

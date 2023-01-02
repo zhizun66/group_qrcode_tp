@@ -1,0 +1,30 @@
+[2022-12-10T21:53:29+08:00][sql] CONNECT:[ UseTime:0.146567s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-10T21:53:29+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.101910s ]
+[2022-12-10T21:53:29+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.097942s ]
+[2022-12-10T21:53:29+08:00][sql] SHOW FULL COLUMNS FROM `wk_qrcode` [ RunTime:0.100043s ]
+[2022-12-10T21:53:29+08:00][sql] SELECT `company`,`remark`,`province`,`city`,`district`,`tags`,`user_id`,`provider_id` FROM `wk_qrcode` WHERE  `id` = 203  AND `status` = 0 LIMIT 1 [ RunTime:0.098397s ]
+[2022-12-10T21:53:29+08:00][sql] SHOW FULL COLUMNS FROM `wk_fetch` [ RunTime:0.100920s ]
+[2022-12-10T21:53:29+08:00][sql] INSERT INTO `wk_fetch` SET `qrcode_id` = 203 , `wxid` = 'zhizun66' , `use_time` = 1670680403 [ RunTime:0.104837s ]
+[2022-12-10T21:53:29+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.100543s ]
+[2022-12-10T21:53:29+08:00][sql] SELECT * FROM `wk_entrance` WHERE  `avatar` = 'https://wework.qpic.cn/wwpic/118289_NB-0ynvrSbaMoas_1667480239/0' LIMIT 1 [ RunTime:0.098643s ]
+[2022-12-10T21:53:29+08:00][sql] INSERT INTO `wk_entrance` SET `qrcode_id` = 203 , `user_id` = 29 , `provider_id` = NULL , `avatar` = 'https://wework.qpic.cn/wwpic/118289_NB-0ynvrSbaMoas_1667480239/0' , `name` = '幸福西饼【崇州粉丝福利群】' , `qr` = 'https://c.weixin.com/g/X_fvWS_zNFx_YWxA' , `im2` = 'gen/83F1.tmp.png' , `expire_date` = '2022-10-30 10:11:32' , `company` = '必胜客' , `province` = NULL , `city` = NULL , `district` = NULL , `tags` = '1' , `status` = 0 , `source` = 2 [ RunTime:0.097622s ]
+[2022-12-10T21:53:51+08:00][sql] CONNECT:[ UseTime:0.166717s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-10T21:53:51+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.102324s ]
+[2022-12-10T21:53:51+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.097937s ]
+[2022-12-10T21:53:51+08:00][sql] SHOW FULL COLUMNS FROM `wk_qrcode` [ RunTime:0.099656s ]
+[2022-12-10T21:53:51+08:00][sql] UPDATE `wk_qrcode`  SET `status` = 1 , `err_msg` = NULL  WHERE  `id` = 203 [ RunTime:0.098096s ]
+[2022-12-10T22:01:58+08:00][sql] CONNECT:[ UseTime:0.141834s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-10T22:01:58+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.098897s ]
+[2022-12-10T22:01:58+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.095691s ]
+[2022-12-10T22:01:58+08:00][sql] SHOW FULL COLUMNS FROM `wk_qrcode` [ RunTime:0.098668s ]
+[2022-12-10T22:01:58+08:00][sql] UPDATE `wk_qrcode`  SET `status` = 1 , `err_msg` = NULL  WHERE  `id` = 203 [ RunTime:0.096255s ]
+[2022-12-10T22:03:07+08:00][sql] CONNECT:[ UseTime:15.245103s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-10T22:03:07+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.738069s ]
+[2022-12-10T22:03:07+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.435964s ]
+[2022-12-10T22:03:07+08:00][sql] SHOW FULL COLUMNS FROM `wk_qrcode` [ RunTime:0.564430s ]
+[2022-12-10T22:03:07+08:00][sql] UPDATE `wk_qrcode`  SET `status` = 1 , `err_msg` = NULL  WHERE  `id` = 203 [ RunTime:0.124840s ]
+[2022-12-10T22:05:01+08:00][sql] CONNECT:[ UseTime:0.153209s ] mysql:host=88.218.194.8;port=3306;dbname=webQrcode;charset=utf8mb4
+[2022-12-10T22:05:01+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.105552s ]
+[2022-12-10T22:05:01+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.103279s ]
+[2022-12-10T22:05:01+08:00][sql] SHOW FULL COLUMNS FROM `wk_qrcode` [ RunTime:0.104849s ]
+[2022-12-10T22:05:01+08:00][sql] UPDATE `wk_qrcode`  SET `status` = 1 , `err_msg` = '二维码失效'  WHERE  `id` = 203 [ RunTime:0.109839s ]
