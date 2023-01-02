@@ -62,7 +62,7 @@ class Index extends CommonController
       $info = $this->db->name('qrcode')->alias('q')
         ->leftJoin([$fetchSql => 'f2'], 'f2.qrcode_id=q.id')
         ->where(function ($q) {
-          $q->whereNull('cnt')->whereOr('f2.cnt', '<', 13);
+          $q->whereNull('cnt')->whereOr('f2.cnt', '<', 1);
         })
         ->where('status', 0)
         ->whereNotExists(function ($query) use ($wxid) {
@@ -247,7 +247,7 @@ class Index extends CommonController
         $query
           ->whereBetween('members', [$members_min, $members_max])
           ->where(['status' => 1, 'joinable' => 1])
-          ->whereTime('join_time', '<', time() - 21600)
+          ->whereTime('join_time', '<', time() - 7200)
           ->order(['id' => 'DESC']);
       } elseif ($modle == 3) {
         $query
