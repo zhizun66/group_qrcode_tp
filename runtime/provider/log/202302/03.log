@@ -1,0 +1,768 @@
+[2023-02-03T16:56:08+08:00][sql] CONNECT:[ UseTime:0.000893s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T16:56:08+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000540s ]
+[2023-02-03T16:56:08+08:00][sql] SELECT `id`,`username`,`score`,`enable` FROM `wk_provider` WHERE  `username` = 'zhizun'  AND `password` = '8e0f6fcc5bccf287283d5a2f41214e0e' LIMIT 1 [ RunTime:0.000782s ]
+[2023-02-03T16:56:14+08:00][sql] CONNECT:[ UseTime:0.000890s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T16:56:14+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000609s ]
+[2023-02-03T16:56:14+08:00][sql] SELECT `id`,`username`,`score`,`enable` FROM `wk_provider` WHERE  `username` = 'zhizun'  AND `password` = '18654b2cd47d004109ca5ee404e002a3' LIMIT 1 [ RunTime:0.000200s ]
+[2023-02-03T16:56:14+08:00][sql] UPDATE `wk_provider`  SET `relogin` = 0  WHERE  `id` = 1 [ RunTime:0.005118s ]
+[2023-02-03T16:56:14+08:00][sql] CONNECT:[ UseTime:0.001090s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T16:56:14+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000619s ]
+[2023-02-03T16:56:14+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000322s ]
+[2023-02-03T16:56:14+08:00][sql] SELECT `id`,`username`,`score` FROM `wk_provider` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000154s ]
+[2023-02-03T16:56:14+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.004859s ]
+[2023-02-03T16:56:14+08:00][sql] SELECT `int_val` FROM `wk_setting` WHERE  `key` = 'entrance_price' LIMIT 1 [ RunTime:0.024159s ]
+[2023-02-03T16:56:14+08:00][sql] SELECT `int_val` FROM `wk_setting` WHERE  `key` = 'max_buy_times' LIMIT 1 [ RunTime:0.000320s ]
+[2023-02-03T16:56:14+08:00][sql] SHOW FULL COLUMNS FROM `wk_qrcode` [ RunTime:0.000588s ]
+[2023-02-03T16:56:14+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_qrcode` WHERE  `provider_id` = 1  AND `valid` = 1 LIMIT 1 [ RunTime:0.007042s ]
+[2023-02-03T16:56:14+08:00][sql] CONNECT:[ UseTime:0.000822s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T16:56:14+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.018116s ]
+[2023-02-03T16:56:14+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000219s ]
+[2023-02-03T16:56:14+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.000843s ]
+[2023-02-03T16:56:14+08:00][sql] SELECT `int_val` FROM `wk_setting` WHERE  `key` = 'service_charge' LIMIT 1 [ RunTime:0.004030s ]
+[2023-02-03T16:56:14+08:00][sql] SHOW FULL COLUMNS FROM `wk_buy` [ RunTime:0.000656s ]
+[2023-02-03T16:56:14+08:00][sql] SELECT SUM(FLOOR(b.price*0.15)) income,DATE(b.add_time) `date` FROM `wk_buy` `b` LEFT JOIN `wk_entrance` `e` ON `e`.`id`=`b`.`entrance_id` WHERE  `e`.`provider_id` = '1'  AND ( DATE(b.add_time) >= DATE_SUB(CURDATE(),INTERVAL 20 DAY) ) GROUP BY `date` [ RunTime:0.054339s ]
+[2023-02-03T16:56:16+08:00][sql] CONNECT:[ UseTime:0.000836s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T16:56:16+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000562s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000182s ]
+[2023-02-03T16:56:16+08:00][sql] CONNECT:[ UseTime:0.000788s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T16:56:16+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000479s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000216s ]
+[2023-02-03T16:56:16+08:00][sql] SHOW FULL COLUMNS FROM `wk_qrcode` [ RunTime:0.000680s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT q.id,q.code,q.company,q.province,q.city,q.district,q.remark,q.status,q.sub_status,q.valid,q.valid_time,q.err_msg,GROUP_CONCAT(t.name) tags,q.add_time FROM `wk_qrcode` `q` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,q.tags) WHERE  `q`.`provider_id` = '1' GROUP BY `q`.`id` LIMIT 0,20 [ RunTime:0.012834s ]
+[2023-02-03T16:56:16+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.000786s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9212'  AND `e`.`expire_date` >= NOW() [ RunTime:0.001345s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9213'  AND `e`.`expire_date` >= NOW() [ RunTime:0.001075s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9214'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000619s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9215'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000787s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10256'  AND `e`.`expire_date` >= NOW() [ RunTime:0.001205s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10257'  AND `e`.`expire_date` >= NOW() [ RunTime:0.001296s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10258'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000285s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10259'  AND `e`.`expire_date` >= NOW() [ RunTime:0.001091s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10260'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000481s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10261'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000171s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10262'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000162s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10263'  AND `e`.`expire_date` >= NOW() [ RunTime:0.001432s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10264'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000581s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10265'  AND `e`.`expire_date` >= NOW() [ RunTime:0.003309s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10266'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000266s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10267'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000171s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10268'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000181s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10269'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000516s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10270'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000196s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10271'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000175s ]
+[2023-02-03T16:56:16+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_qrcode` WHERE  `provider_id` = 1 LIMIT 1 [ RunTime:0.000570s ]
+[2023-02-03T17:01:35+08:00][sql] CONNECT:[ UseTime:0.002042s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:01:35+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000920s ]
+[2023-02-03T17:01:35+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000188s ]
+[2023-02-03T17:01:35+08:00][sql] CONNECT:[ UseTime:0.001524s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:01:35+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.001213s ]
+[2023-02-03T17:01:35+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000319s ]
+[2023-02-03T17:01:35+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.000587s ]
+[2023-02-03T17:01:35+08:00][sql] SELECT `e`.`id`,`e`.`qrcode_id`,`e`.`name`,`e`.`avatar`,`e`.`expire_date`,`e`.`members`,IF(e.source=1,IFNULL(e.im,e.im2),NULL) im,`e`.`hide`,`e`.`add_time`,`e`.`company`,`e`.`remark`,`e`.`province`,`e`.`city`,`e`.`district`,GROUP_CONCAT(DISTINCT t.name) tags,`e`.`type`,COUNT(DISTINCT b.id) buy_cnt,`e`.`status` FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 [ RunTime:0.203346s ]
+[2023-02-03T17:01:35+08:00][sql] SELECT COUNT(*) AS think_count FROM ( SELECT count(*) AS think_count FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 ) `_group_count_` LIMIT 1 [ RunTime:0.079432s ]
+[2023-02-03T17:35:56+08:00][sql] CONNECT:[ UseTime:0.001205s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:35:56+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000680s ]
+[2023-02-03T17:35:56+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000365s ]
+[2023-02-03T17:35:56+08:00][sql] SELECT `id`,`username`,`score` FROM `wk_provider` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000411s ]
+[2023-02-03T17:35:56+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.001556s ]
+[2023-02-03T17:35:56+08:00][sql] SELECT `int_val` FROM `wk_setting` WHERE  `key` = 'entrance_price' LIMIT 1 [ RunTime:0.001244s ]
+[2023-02-03T17:35:56+08:00][sql] SELECT `int_val` FROM `wk_setting` WHERE  `key` = 'max_buy_times' LIMIT 1 [ RunTime:0.000429s ]
+[2023-02-03T17:35:56+08:00][sql] SHOW FULL COLUMNS FROM `wk_qrcode` [ RunTime:0.001172s ]
+[2023-02-03T17:35:56+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_qrcode` WHERE  `provider_id` = 1  AND `valid` = 1 LIMIT 1 [ RunTime:0.020491s ]
+[2023-02-03T17:35:56+08:00][sql] CONNECT:[ UseTime:0.001953s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:35:56+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001898s ]
+[2023-02-03T17:35:56+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.001029s ]
+[2023-02-03T17:35:56+08:00][sql] CONNECT:[ UseTime:0.001107s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:35:56+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000814s ]
+[2023-02-03T17:35:56+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000355s ]
+[2023-02-03T17:35:56+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.000732s ]
+[2023-02-03T17:35:56+08:00][sql] SELECT `e`.`id`,`e`.`qrcode_id`,`e`.`name`,`e`.`avatar`,`e`.`expire_date`,`e`.`members`,IF(e.source=1,IFNULL(e.im,e.im2),NULL) im,`e`.`hide`,`e`.`add_time`,`e`.`company`,`e`.`remark`,`e`.`province`,`e`.`city`,`e`.`district`,GROUP_CONCAT(DISTINCT t.name) tags,`e`.`type`,COUNT(DISTINCT b.id) buy_cnt,`e`.`status` FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 [ RunTime:0.194782s ]
+[2023-02-03T17:35:56+08:00][sql] SELECT COUNT(*) AS think_count FROM ( SELECT count(*) AS think_count FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 ) `_group_count_` LIMIT 1 [ RunTime:0.095028s ]
+[2023-02-03T17:53:04+08:00][sql] CONNECT:[ UseTime:0.001192s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:53:04+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000909s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000259s ]
+[2023-02-03T17:53:04+08:00][sql] CONNECT:[ UseTime:0.000849s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:53:04+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000951s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000226s ]
+[2023-02-03T17:53:04+08:00][sql] SHOW FULL COLUMNS FROM `wk_qrcode` [ RunTime:0.000768s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT q.id,q.code,q.company,q.province,q.city,q.district,q.remark,q.status,q.sub_status,q.valid,q.valid_time,q.err_msg,GROUP_CONCAT(t.name) tags,q.add_time FROM `wk_qrcode` `q` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,q.tags) WHERE  `q`.`provider_id` = '1' GROUP BY `q`.`id` LIMIT 0,20 [ RunTime:0.012566s ]
+[2023-02-03T17:53:04+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.001095s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9212'  AND `e`.`expire_date` >= NOW() [ RunTime:0.001181s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9213'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000328s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9214'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000243s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9215'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000194s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10256'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000516s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10257'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000228s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10258'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000236s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10259'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000213s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10260'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000197s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10261'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000216s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10262'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000191s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10263'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000189s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10264'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000192s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10265'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000243s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10266'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000186s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10267'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000163s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10268'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000250s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10269'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000187s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10270'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000150s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10271'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000168s ]
+[2023-02-03T17:53:04+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_qrcode` WHERE  `provider_id` = 1 LIMIT 1 [ RunTime:0.000958s ]
+[2023-02-03T17:53:06+08:00][sql] CONNECT:[ UseTime:0.000958s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:53:06+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000895s ]
+[2023-02-03T17:53:06+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000260s ]
+[2023-02-03T17:53:06+08:00][sql] CONNECT:[ UseTime:0.001223s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:53:06+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000794s ]
+[2023-02-03T17:53:06+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000259s ]
+[2023-02-03T17:53:06+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.000682s ]
+[2023-02-03T17:53:06+08:00][sql] SELECT `e`.`id`,`e`.`qrcode_id`,`e`.`name`,`e`.`avatar`,`e`.`expire_date`,`e`.`members`,IF(e.source=1,IFNULL(e.im,e.im2),NULL) im,`e`.`hide`,`e`.`add_time`,`e`.`company`,`e`.`remark`,`e`.`province`,`e`.`city`,`e`.`district`,GROUP_CONCAT(DISTINCT t.name) tags,`e`.`type`,COUNT(DISTINCT b.id) buy_cnt,`e`.`status` FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 [ RunTime:0.163623s ]
+[2023-02-03T17:53:06+08:00][sql] SELECT COUNT(*) AS think_count FROM ( SELECT count(*) AS think_count FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 ) `_group_count_` LIMIT 1 [ RunTime:0.077209s ]
+[2023-02-03T17:53:26+08:00][sql] CONNECT:[ UseTime:0.000982s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:53:26+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000622s ]
+[2023-02-03T17:53:26+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000403s ]
+[2023-02-03T17:53:26+08:00][sql] SELECT `id`,`username`,`score` FROM `wk_provider` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000255s ]
+[2023-02-03T17:53:26+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.001108s ]
+[2023-02-03T17:53:26+08:00][sql] SELECT `int_val` FROM `wk_setting` WHERE  `key` = 'entrance_price' LIMIT 1 [ RunTime:0.000226s ]
+[2023-02-03T17:53:26+08:00][sql] SELECT `int_val` FROM `wk_setting` WHERE  `key` = 'max_buy_times' LIMIT 1 [ RunTime:0.000155s ]
+[2023-02-03T17:53:26+08:00][sql] SHOW FULL COLUMNS FROM `wk_qrcode` [ RunTime:0.000932s ]
+[2023-02-03T17:53:26+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_qrcode` WHERE  `provider_id` = 1  AND `valid` = 1 LIMIT 1 [ RunTime:0.002574s ]
+[2023-02-03T17:53:26+08:00][sql] CONNECT:[ UseTime:0.001249s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:53:26+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001288s ]
+[2023-02-03T17:53:26+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000320s ]
+[2023-02-03T17:53:27+08:00][sql] CONNECT:[ UseTime:0.020746s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:53:27+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.001333s ]
+[2023-02-03T17:53:27+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.001062s ]
+[2023-02-03T17:53:27+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.000956s ]
+[2023-02-03T17:53:27+08:00][sql] SELECT `e`.`id`,`e`.`qrcode_id`,`e`.`name`,`e`.`avatar`,`e`.`expire_date`,`e`.`members`,IF(e.source=1,IFNULL(e.im,e.im2),NULL) im,`e`.`hide`,`e`.`add_time`,`e`.`company`,`e`.`remark`,`e`.`province`,`e`.`city`,`e`.`district`,GROUP_CONCAT(DISTINCT t.name) tags,`e`.`type`,COUNT(DISTINCT b.id) buy_cnt,`e`.`status` FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 [ RunTime:0.172461s ]
+[2023-02-03T17:53:27+08:00][sql] SELECT COUNT(*) AS think_count FROM ( SELECT count(*) AS think_count FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 ) `_group_count_` LIMIT 1 [ RunTime:0.082490s ]
+[2023-02-03T17:54:21+08:00][sql] CONNECT:[ UseTime:0.000881s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:54:21+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000545s ]
+[2023-02-03T17:54:21+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000199s ]
+[2023-02-03T17:54:21+08:00][sql] CONNECT:[ UseTime:0.002519s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:54:21+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000831s ]
+[2023-02-03T17:54:21+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000489s ]
+[2023-02-03T17:54:21+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.000816s ]
+[2023-02-03T17:54:21+08:00][sql] SELECT `e`.`id`,`e`.`qrcode_id`,`e`.`name`,`e`.`avatar`,`e`.`expire_date`,`e`.`members`,IF(e.source=1,IFNULL(e.im,e.im2),NULL) im,`e`.`hide`,`e`.`add_time`,`e`.`company`,`e`.`remark`,`e`.`province`,`e`.`city`,`e`.`district`,GROUP_CONCAT(DISTINCT t.name) tags,`e`.`type`,COUNT(DISTINCT b.id) buy_cnt,`e`.`status` FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 [ RunTime:0.162834s ]
+[2023-02-03T17:54:21+08:00][sql] SELECT COUNT(*) AS think_count FROM ( SELECT count(*) AS think_count FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 ) `_group_count_` LIMIT 1 [ RunTime:0.077270s ]
+[2023-02-03T17:55:19+08:00][sql] CONNECT:[ UseTime:0.001447s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:55:19+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000902s ]
+[2023-02-03T17:55:19+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000459s ]
+[2023-02-03T17:55:20+08:00][sql] CONNECT:[ UseTime:0.001432s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:55:20+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.001173s ]
+[2023-02-03T17:55:20+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000599s ]
+[2023-02-03T17:55:20+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.003083s ]
+[2023-02-03T17:55:20+08:00][sql] SELECT `e`.`id`,`e`.`qrcode_id`,`e`.`name`,`e`.`avatar`,`e`.`expire_date`,`e`.`members`,IF(e.source=1,IFNULL(e.im,e.im2),NULL) im,`e`.`hide`,`e`.`add_time`,`e`.`company`,`e`.`remark`,`e`.`province`,`e`.`city`,`e`.`district`,GROUP_CONCAT(DISTINCT t.name) tags,`e`.`type`,COUNT(DISTINCT b.id) buy_cnt,`e`.`status` FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 [ RunTime:0.183847s ]
+[2023-02-03T17:55:20+08:00][sql] SELECT COUNT(*) AS think_count FROM ( SELECT count(*) AS think_count FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 ) `_group_count_` LIMIT 1 [ RunTime:0.083185s ]
+[2023-02-03T17:55:22+08:00][sql] CONNECT:[ UseTime:0.000859s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:55:22+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000494s ]
+[2023-02-03T17:55:22+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000240s ]
+[2023-02-03T17:55:22+08:00][sql] CONNECT:[ UseTime:0.001131s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:55:22+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000598s ]
+[2023-02-03T17:55:22+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000185s ]
+[2023-02-03T17:55:22+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.000537s ]
+[2023-02-03T17:55:22+08:00][sql] SELECT `e`.`id`,`e`.`qrcode_id`,`e`.`name`,`e`.`avatar`,`e`.`expire_date`,`e`.`members`,IF(e.source=1,IFNULL(e.im,e.im2),NULL) im,`e`.`hide`,`e`.`add_time`,`e`.`company`,`e`.`remark`,`e`.`province`,`e`.`city`,`e`.`district`,GROUP_CONCAT(DISTINCT t.name) tags,`e`.`type`,COUNT(DISTINCT b.id) buy_cnt,`e`.`status` FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 [ RunTime:0.161668s ]
+[2023-02-03T17:55:22+08:00][sql] SELECT COUNT(*) AS think_count FROM ( SELECT count(*) AS think_count FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 ) `_group_count_` LIMIT 1 [ RunTime:0.077350s ]
+[2023-02-03T17:55:22+08:00][sql] CONNECT:[ UseTime:0.002507s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:55:22+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001155s ]
+[2023-02-03T17:55:22+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000440s ]
+[2023-02-03T17:55:23+08:00][sql] CONNECT:[ UseTime:0.001172s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:55:23+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.001031s ]
+[2023-02-03T17:55:23+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000427s ]
+[2023-02-03T17:55:23+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.000763s ]
+[2023-02-03T17:55:23+08:00][sql] SELECT `e`.`id`,`e`.`qrcode_id`,`e`.`name`,`e`.`avatar`,`e`.`expire_date`,`e`.`members`,IF(e.source=1,IFNULL(e.im,e.im2),NULL) im,`e`.`hide`,`e`.`add_time`,`e`.`company`,`e`.`remark`,`e`.`province`,`e`.`city`,`e`.`district`,GROUP_CONCAT(DISTINCT t.name) tags,`e`.`type`,COUNT(DISTINCT b.id) buy_cnt,`e`.`status` FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 [ RunTime:0.164985s ]
+[2023-02-03T17:55:23+08:00][sql] SELECT COUNT(*) AS think_count FROM ( SELECT count(*) AS think_count FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 ) `_group_count_` LIMIT 1 [ RunTime:0.080150s ]
+[2023-02-03T17:55:24+08:00][sql] CONNECT:[ UseTime:0.013299s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:55:24+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000725s ]
+[2023-02-03T17:55:24+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000309s ]
+[2023-02-03T17:55:24+08:00][sql] CONNECT:[ UseTime:0.001239s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:55:24+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000589s ]
+[2023-02-03T17:55:24+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000199s ]
+[2023-02-03T17:55:24+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.000605s ]
+[2023-02-03T17:55:24+08:00][sql] SELECT `e`.`id`,`e`.`qrcode_id`,`e`.`name`,`e`.`avatar`,`e`.`expire_date`,`e`.`members`,IF(e.source=1,IFNULL(e.im,e.im2),NULL) im,`e`.`hide`,`e`.`add_time`,`e`.`company`,`e`.`remark`,`e`.`province`,`e`.`city`,`e`.`district`,GROUP_CONCAT(DISTINCT t.name) tags,`e`.`type`,COUNT(DISTINCT b.id) buy_cnt,`e`.`status` FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 [ RunTime:0.163773s ]
+[2023-02-03T17:55:24+08:00][sql] SELECT COUNT(*) AS think_count FROM ( SELECT count(*) AS think_count FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 ) `_group_count_` LIMIT 1 [ RunTime:0.076068s ]
+[2023-02-03T17:55:42+08:00][sql] CONNECT:[ UseTime:0.001295s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:55:42+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000854s ]
+[2023-02-03T17:55:42+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000294s ]
+[2023-02-03T17:55:42+08:00][sql] CONNECT:[ UseTime:0.001466s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T17:55:42+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.001191s ]
+[2023-02-03T17:55:42+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000837s ]
+[2023-02-03T17:55:42+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.001306s ]
+[2023-02-03T17:55:42+08:00][sql] SELECT `e`.`id`,`e`.`qrcode_id`,`e`.`name`,`e`.`avatar`,`e`.`expire_date`,`e`.`members`,IF(e.source=1,IFNULL(e.im,e.im2),NULL) im,`e`.`hide`,`e`.`add_time`,`e`.`company`,`e`.`remark`,`e`.`province`,`e`.`city`,`e`.`district`,GROUP_CONCAT(DISTINCT t.name) tags,`e`.`type`,COUNT(DISTINCT b.id) buy_cnt,`e`.`status` FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 [ RunTime:0.169868s ]
+[2023-02-03T17:55:42+08:00][sql] SELECT COUNT(*) AS think_count FROM ( SELECT count(*) AS think_count FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 ) `_group_count_` LIMIT 1 [ RunTime:0.080170s ]
+[2023-02-03T18:03:01+08:00][sql] CONNECT:[ UseTime:0.001017s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:03:01+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000523s ]
+[2023-02-03T18:03:01+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000188s ]
+[2023-02-03T18:03:02+08:00][sql] CONNECT:[ UseTime:0.000962s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:03:02+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000588s ]
+[2023-02-03T18:03:02+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000213s ]
+[2023-02-03T18:03:02+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.000731s ]
+[2023-02-03T18:03:02+08:00][sql] SELECT `e`.`id`,`e`.`qrcode_id`,`e`.`name`,`e`.`avatar`,`e`.`expire_date`,`e`.`members`,IF(e.source=1,IFNULL(e.im,e.im2),NULL) im,`e`.`hide`,`e`.`add_time`,`e`.`company`,`e`.`remark`,`e`.`province`,`e`.`city`,`e`.`district`,GROUP_CONCAT(DISTINCT t.name) tags,`e`.`type`,COUNT(DISTINCT b.id) buy_cnt,`e`.`status` FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 [ RunTime:0.163128s ]
+[2023-02-03T18:03:02+08:00][sql] SELECT COUNT(*) AS think_count FROM ( SELECT count(*) AS think_count FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 ) `_group_count_` LIMIT 1 [ RunTime:0.078460s ]
+[2023-02-03T18:03:03+08:00][sql] CONNECT:[ UseTime:0.001049s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:03:03+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000525s ]
+[2023-02-03T18:03:03+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000170s ]
+[2023-02-03T18:03:03+08:00][sql] CONNECT:[ UseTime:0.000867s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:03:03+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000677s ]
+[2023-02-03T18:03:03+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000321s ]
+[2023-02-03T18:03:03+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.000492s ]
+[2023-02-03T18:03:03+08:00][sql] SELECT `e`.`id`,`e`.`qrcode_id`,`e`.`name`,`e`.`avatar`,`e`.`expire_date`,`e`.`members`,IF(e.source=1,IFNULL(e.im,e.im2),NULL) im,`e`.`hide`,`e`.`add_time`,`e`.`company`,`e`.`remark`,`e`.`province`,`e`.`city`,`e`.`district`,GROUP_CONCAT(DISTINCT t.name) tags,`e`.`type`,COUNT(DISTINCT b.id) buy_cnt,`e`.`status` FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 [ RunTime:0.161784s ]
+[2023-02-03T18:03:03+08:00][sql] SELECT COUNT(*) AS think_count FROM ( SELECT count(*) AS think_count FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 ) `_group_count_` LIMIT 1 [ RunTime:0.077253s ]
+[2023-02-03T18:03:41+08:00][sql] CONNECT:[ UseTime:0.001475s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:03:41+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000867s ]
+[2023-02-03T18:03:41+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000297s ]
+[2023-02-03T18:03:41+08:00][sql] CONNECT:[ UseTime:0.001707s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:03:41+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.001088s ]
+[2023-02-03T18:03:41+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000493s ]
+[2023-02-03T18:03:41+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.000909s ]
+[2023-02-03T18:03:41+08:00][sql] SELECT `e`.`id`,`e`.`qrcode_id`,`e`.`name`,`e`.`avatar`,`e`.`expire_date`,`e`.`members`,IF(e.source=1,IFNULL(e.im,e.im2),NULL) im,`e`.`hide`,`e`.`add_time`,`e`.`company`,`e`.`remark`,`e`.`province`,`e`.`city`,`e`.`district`,GROUP_CONCAT(DISTINCT t.name) tags,`e`.`type`,COUNT(DISTINCT b.id) buy_cnt,`e`.`status` FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 [ RunTime:0.172417s ]
+[2023-02-03T18:03:41+08:00][sql] SELECT COUNT(*) AS think_count FROM ( SELECT count(*) AS think_count FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 ) `_group_count_` LIMIT 1 [ RunTime:0.079386s ]
+[2023-02-03T18:03:52+08:00][sql] CONNECT:[ UseTime:0.000945s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:03:52+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.001013s ]
+[2023-02-03T18:03:52+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000467s ]
+[2023-02-03T18:03:52+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.000720s ]
+[2023-02-03T18:03:52+08:00][sql] SELECT `e`.`id`,`e`.`qrcode_id`,`e`.`name`,`e`.`avatar`,`e`.`expire_date`,`e`.`members`,IF(e.source=1,IFNULL(e.im,e.im2),NULL) im,`e`.`hide`,`e`.`add_time`,`e`.`company`,`e`.`remark`,`e`.`province`,`e`.`city`,`e`.`district`,GROUP_CONCAT(DISTINCT t.name) tags,`e`.`type`,COUNT(DISTINCT b.id) buy_cnt,`e`.`status` FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `e`.`company` LIKE '%同仁堂%'  AND `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 [ RunTime:0.029473s ]
+[2023-02-03T18:03:52+08:00][sql] SELECT COUNT(*) AS think_count FROM ( SELECT count(*) AS think_count FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `e`.`company` LIKE '%同仁堂%'  AND `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 ) `_group_count_` LIMIT 1 [ RunTime:0.021764s ]
+[2023-02-03T18:03:55+08:00][sql] CONNECT:[ UseTime:0.000896s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:03:55+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000501s ]
+[2023-02-03T18:03:55+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000196s ]
+[2023-02-03T18:03:55+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.000454s ]
+[2023-02-03T18:03:55+08:00][sql] SELECT `e`.`id`,`e`.`qrcode_id`,`e`.`name`,`e`.`avatar`,`e`.`expire_date`,`e`.`members`,IF(e.source=1,IFNULL(e.im,e.im2),NULL) im,`e`.`hide`,`e`.`add_time`,`e`.`company`,`e`.`remark`,`e`.`province`,`e`.`city`,`e`.`district`,GROUP_CONCAT(DISTINCT t.name) tags,`e`.`type`,COUNT(DISTINCT b.id) buy_cnt,`e`.`status` FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 [ RunTime:0.159541s ]
+[2023-02-03T18:03:55+08:00][sql] SELECT COUNT(*) AS think_count FROM ( SELECT count(*) AS think_count FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 ) `_group_count_` LIMIT 1 [ RunTime:0.077258s ]
+[2023-02-03T18:04:00+08:00][sql] CONNECT:[ UseTime:0.001351s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:04:00+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000748s ]
+[2023-02-03T18:04:00+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000268s ]
+[2023-02-03T18:04:00+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.000671s ]
+[2023-02-03T18:04:00+08:00][sql] SELECT `e`.`id`,`e`.`qrcode_id`,`e`.`name`,`e`.`avatar`,`e`.`expire_date`,`e`.`members`,IF(e.source=1,IFNULL(e.im,e.im2),NULL) im,`e`.`hide`,`e`.`add_time`,`e`.`company`,`e`.`remark`,`e`.`province`,`e`.`city`,`e`.`district`,GROUP_CONCAT(DISTINCT t.name) tags,`e`.`type`,COUNT(DISTINCT b.id) buy_cnt,`e`.`status` FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `e`.`company` LIKE '%	 滴滴%'  AND `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 [ RunTime:0.028533s ]
+[2023-02-03T18:04:00+08:00][sql] SELECT COUNT(*) AS think_count FROM ( SELECT count(*) AS think_count FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `e`.`company` LIKE '%	 滴滴%'  AND `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 ) `_group_count_` LIMIT 1 [ RunTime:0.020319s ]
+[2023-02-03T18:04:04+08:00][sql] CONNECT:[ UseTime:0.000976s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:04:04+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000519s ]
+[2023-02-03T18:04:04+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000221s ]
+[2023-02-03T18:04:04+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.000452s ]
+[2023-02-03T18:04:04+08:00][sql] SELECT `e`.`id`,`e`.`qrcode_id`,`e`.`name`,`e`.`avatar`,`e`.`expire_date`,`e`.`members`,IF(e.source=1,IFNULL(e.im,e.im2),NULL) im,`e`.`hide`,`e`.`add_time`,`e`.`company`,`e`.`remark`,`e`.`province`,`e`.`city`,`e`.`district`,GROUP_CONCAT(DISTINCT t.name) tags,`e`.`type`,COUNT(DISTINCT b.id) buy_cnt,`e`.`status` FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `e`.`company` LIKE '% 滴滴%'  AND `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 [ RunTime:0.028660s ]
+[2023-02-03T18:04:04+08:00][sql] SELECT COUNT(*) AS think_count FROM ( SELECT count(*) AS think_count FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `e`.`company` LIKE '% 滴滴%'  AND `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 ) `_group_count_` LIMIT 1 [ RunTime:0.020209s ]
+[2023-02-03T18:04:06+08:00][sql] CONNECT:[ UseTime:0.001124s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:04:06+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000794s ]
+[2023-02-03T18:04:06+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000363s ]
+[2023-02-03T18:04:06+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.000613s ]
+[2023-02-03T18:04:06+08:00][sql] SELECT `e`.`id`,`e`.`qrcode_id`,`e`.`name`,`e`.`avatar`,`e`.`expire_date`,`e`.`members`,IF(e.source=1,IFNULL(e.im,e.im2),NULL) im,`e`.`hide`,`e`.`add_time`,`e`.`company`,`e`.`remark`,`e`.`province`,`e`.`city`,`e`.`district`,GROUP_CONCAT(DISTINCT t.name) tags,`e`.`type`,COUNT(DISTINCT b.id) buy_cnt,`e`.`status` FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `e`.`company` LIKE '% 滴滴%'  AND `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 [ RunTime:0.028236s ]
+[2023-02-03T18:04:06+08:00][sql] SELECT COUNT(*) AS think_count FROM ( SELECT count(*) AS think_count FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `e`.`company` LIKE '% 滴滴%'  AND `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 ) `_group_count_` LIMIT 1 [ RunTime:0.020780s ]
+[2023-02-03T18:04:23+08:00][sql] CONNECT:[ UseTime:0.000880s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:04:23+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000719s ]
+[2023-02-03T18:04:23+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000228s ]
+[2023-02-03T18:04:25+08:00][sql] CONNECT:[ UseTime:0.000860s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:04:25+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001269s ]
+[2023-02-03T18:04:25+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.001008s ]
+[2023-02-03T18:04:29+08:00][sql] CONNECT:[ UseTime:0.001453s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:04:29+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001111s ]
+[2023-02-03T18:04:29+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000806s ]
+[2023-02-03T18:11:19+08:00][sql] CONNECT:[ UseTime:0.001082s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:11:19+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000698s ]
+[2023-02-03T18:11:19+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000797s ]
+[2023-02-03T18:11:29+08:00][sql] CONNECT:[ UseTime:0.000868s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:11:29+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000567s ]
+[2023-02-03T18:11:29+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000791s ]
+[2023-02-03T18:11:42+08:00][sql] CONNECT:[ UseTime:0.001084s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:11:42+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.002016s ]
+[2023-02-03T18:11:42+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.006550s ]
+[2023-02-03T18:17:47+08:00][sql] CONNECT:[ UseTime:0.000916s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:17:47+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000665s ]
+[2023-02-03T18:17:47+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.004154s ]
+[2023-02-03T18:35:32+08:00][sql] CONNECT:[ UseTime:0.001337s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:35:32+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000549s ]
+[2023-02-03T18:35:32+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000900s ]
+[2023-02-03T18:36:03+08:00][sql] CONNECT:[ UseTime:0.001170s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:36:03+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.001311s ]
+[2023-02-03T18:36:03+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000463s ]
+[2023-02-03T18:36:03+08:00][sql] SELECT `id`,`username`,`score` FROM `wk_provider` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000264s ]
+[2023-02-03T18:36:03+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.001150s ]
+[2023-02-03T18:36:03+08:00][sql] SELECT `int_val` FROM `wk_setting` WHERE  `key` = 'entrance_price' LIMIT 1 [ RunTime:0.001190s ]
+[2023-02-03T18:36:03+08:00][sql] SELECT `int_val` FROM `wk_setting` WHERE  `key` = 'max_buy_times' LIMIT 1 [ RunTime:0.000416s ]
+[2023-02-03T18:36:03+08:00][sql] SHOW FULL COLUMNS FROM `wk_qrcode` [ RunTime:0.000611s ]
+[2023-02-03T18:36:03+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_qrcode` WHERE  `provider_id` = 1  AND `valid` = 1 LIMIT 1 [ RunTime:0.030064s ]
+[2023-02-03T18:36:03+08:00][sql] CONNECT:[ UseTime:0.018636s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:36:03+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000876s ]
+[2023-02-03T18:36:03+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.006069s ]
+[2023-02-03T18:36:03+08:00][sql] CONNECT:[ UseTime:0.001383s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:36:03+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000945s ]
+[2023-02-03T18:36:03+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000327s ]
+[2023-02-03T18:36:03+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.000677s ]
+[2023-02-03T18:36:03+08:00][sql] SELECT `e`.`id`,`e`.`qrcode_id`,`e`.`name`,`e`.`avatar`,`e`.`expire_date`,`e`.`members`,IF(e.source=1,IFNULL(e.im,e.im2),NULL) im,`e`.`hide`,`e`.`add_time`,`e`.`company`,`e`.`remark`,`e`.`province`,`e`.`city`,`e`.`district`,GROUP_CONCAT(DISTINCT t.name) tags,`e`.`type`,COUNT(DISTINCT b.id) buy_cnt,`e`.`status` FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 [ RunTime:0.245103s ]
+[2023-02-03T18:36:03+08:00][sql] SELECT COUNT(*) AS think_count FROM ( SELECT count(*) AS think_count FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 ) `_group_count_` LIMIT 1 [ RunTime:0.079819s ]
+[2023-02-03T18:36:06+08:00][sql] CONNECT:[ UseTime:0.000714s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:36:06+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000524s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000342s ]
+[2023-02-03T18:36:06+08:00][sql] CONNECT:[ UseTime:0.000913s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:36:06+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000687s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000189s ]
+[2023-02-03T18:36:06+08:00][sql] SHOW FULL COLUMNS FROM `wk_qrcode` [ RunTime:0.000565s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT q.id,q.code,q.company,q.province,q.city,q.district,q.remark,q.status,q.sub_status,q.valid,q.valid_time,q.err_msg,GROUP_CONCAT(t.name) tags,q.add_time FROM `wk_qrcode` `q` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,q.tags) WHERE  `q`.`provider_id` = '1' GROUP BY `q`.`id` LIMIT 0,20 [ RunTime:0.012259s ]
+[2023-02-03T18:36:06+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.000623s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9212'  AND `e`.`expire_date` >= NOW() [ RunTime:0.001109s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9213'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000280s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9214'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000214s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9215'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000195s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10256'  AND `e`.`expire_date` >= NOW() [ RunTime:0.003228s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10257'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000282s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10258'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000213s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10259'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000230s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10260'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000214s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10261'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000196s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10262'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000210s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10263'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000226s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10264'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000221s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10265'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000206s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10266'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000172s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10267'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000173s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10268'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000169s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10269'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000528s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10270'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000587s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10271'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000564s ]
+[2023-02-03T18:36:06+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_qrcode` WHERE  `provider_id` = 1 LIMIT 1 [ RunTime:0.000769s ]
+[2023-02-03T18:37:02+08:00][sql] CONNECT:[ UseTime:0.001130s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:37:02+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000605s ]
+[2023-02-03T18:37:02+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000173s ]
+[2023-02-03T18:37:04+08:00][sql] CONNECT:[ UseTime:0.000957s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:37:04+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001390s ]
+[2023-02-03T18:37:04+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000660s ]
+[2023-02-03T18:37:07+08:00][sql] CONNECT:[ UseTime:0.000847s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:37:07+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000499s ]
+[2023-02-03T18:37:07+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000176s ]
+[2023-02-03T18:37:15+08:00][sql] CONNECT:[ UseTime:0.001524s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:37:15+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001123s ]
+[2023-02-03T18:37:15+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000536s ]
+[2023-02-03T18:37:28+08:00][sql] CONNECT:[ UseTime:0.001803s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:37:28+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000840s ]
+[2023-02-03T18:37:28+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000333s ]
+[2023-02-03T18:37:29+08:00][sql] CONNECT:[ UseTime:0.001565s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:37:29+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000699s ]
+[2023-02-03T18:37:29+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000210s ]
+[2023-02-03T18:37:31+08:00][sql] CONNECT:[ UseTime:0.001130s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:37:31+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000827s ]
+[2023-02-03T18:37:31+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000356s ]
+[2023-02-03T18:39:07+08:00][sql] CONNECT:[ UseTime:0.000948s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:39:07+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000756s ]
+[2023-02-03T18:39:07+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000922s ]
+[2023-02-03T18:39:25+08:00][sql] CONNECT:[ UseTime:0.001120s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:39:25+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000615s ]
+[2023-02-03T18:39:25+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000740s ]
+[2023-02-03T18:42:46+08:00][sql] CONNECT:[ UseTime:0.000912s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:42:46+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000600s ]
+[2023-02-03T18:42:46+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000812s ]
+[2023-02-03T18:45:16+08:00][sql] CONNECT:[ UseTime:0.000798s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:45:16+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000583s ]
+[2023-02-03T18:45:16+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000803s ]
+[2023-02-03T18:45:23+08:00][sql] CONNECT:[ UseTime:0.001170s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:45:23+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000813s ]
+[2023-02-03T18:45:23+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000401s ]
+[2023-02-03T18:45:25+08:00][sql] CONNECT:[ UseTime:0.001325s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:45:25+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000734s ]
+[2023-02-03T18:45:25+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000842s ]
+[2023-02-03T18:45:26+08:00][sql] CONNECT:[ UseTime:0.000950s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:45:26+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000534s ]
+[2023-02-03T18:45:26+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000156s ]
+[2023-02-03T18:45:27+08:00][sql] CONNECT:[ UseTime:0.001181s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:45:27+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000715s ]
+[2023-02-03T18:45:27+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.008865s ]
+[2023-02-03T18:46:06+08:00][sql] CONNECT:[ UseTime:0.001484s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:46:06+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001132s ]
+[2023-02-03T18:46:06+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.001233s ]
+[2023-02-03T18:46:36+08:00][sql] CONNECT:[ UseTime:0.001283s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:46:36+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001292s ]
+[2023-02-03T18:46:36+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.006101s ]
+[2023-02-03T18:53:47+08:00][sql] CONNECT:[ UseTime:0.001149s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:53:47+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001477s ]
+[2023-02-03T18:53:47+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.001357s ]
+[2023-02-03T18:57:28+08:00][sql] CONNECT:[ UseTime:0.000880s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:57:28+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000789s ]
+[2023-02-03T18:57:28+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.001057s ]
+[2023-02-03T18:57:48+08:00][sql] CONNECT:[ UseTime:0.000982s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:57:48+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000711s ]
+[2023-02-03T18:57:48+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000786s ]
+[2023-02-03T18:58:34+08:00][sql] CONNECT:[ UseTime:0.001045s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:58:34+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000993s ]
+[2023-02-03T18:58:34+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.003996s ]
+[2023-02-03T18:58:38+08:00][sql] CONNECT:[ UseTime:0.000890s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:58:38+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001461s ]
+[2023-02-03T18:58:38+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.001120s ]
+[2023-02-03T18:58:47+08:00][sql] CONNECT:[ UseTime:0.000797s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:58:47+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000473s ]
+[2023-02-03T18:58:47+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000790s ]
+[2023-02-03T18:58:53+08:00][sql] CONNECT:[ UseTime:0.000851s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:58:53+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000675s ]
+[2023-02-03T18:58:53+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000798s ]
+[2023-02-03T18:59:40+08:00][sql] CONNECT:[ UseTime:0.000928s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T18:59:40+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000639s ]
+[2023-02-03T18:59:40+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.001045s ]
+[2023-02-03T19:00:19+08:00][sql] CONNECT:[ UseTime:0.001016s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:00:19+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000730s ]
+[2023-02-03T19:00:19+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000818s ]
+[2023-02-03T19:00:55+08:00][sql] CONNECT:[ UseTime:0.000999s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:00:55+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000568s ]
+[2023-02-03T19:00:55+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000730s ]
+[2023-02-03T19:00:57+08:00][sql] CONNECT:[ UseTime:0.000957s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:00:57+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000650s ]
+[2023-02-03T19:00:57+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000878s ]
+[2023-02-03T19:05:08+08:00][sql] CONNECT:[ UseTime:0.000967s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:05:08+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000611s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000159s ]
+[2023-02-03T19:05:08+08:00][sql] CONNECT:[ UseTime:0.025006s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:05:08+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000611s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000205s ]
+[2023-02-03T19:05:08+08:00][sql] SHOW FULL COLUMNS FROM `wk_qrcode` [ RunTime:0.000536s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT q.id,q.code,q.company,q.province,q.city,q.district,q.remark,q.status,q.sub_status,q.valid,q.valid_time,q.err_msg,GROUP_CONCAT(t.name) tags,q.add_time FROM `wk_qrcode` `q` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,q.tags) WHERE  `q`.`provider_id` = '1' GROUP BY `q`.`id` LIMIT 0,20 [ RunTime:0.011894s ]
+[2023-02-03T19:05:08+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.000617s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9212'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000370s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9213'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000288s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9214'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000246s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9215'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000226s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10256'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000275s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10257'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000231s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10258'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000189s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10259'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000343s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10260'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000266s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10261'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000206s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10262'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000660s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10263'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000910s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10264'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000645s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10265'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000403s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10266'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000290s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10267'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000208s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10268'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000245s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10269'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000313s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10270'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000203s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10271'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000164s ]
+[2023-02-03T19:05:08+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_qrcode` WHERE  `provider_id` = 1 LIMIT 1 [ RunTime:0.000596s ]
+[2023-02-03T19:05:10+08:00][sql] CONNECT:[ UseTime:0.014098s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:05:10+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000738s ]
+[2023-02-03T19:05:10+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000219s ]
+[2023-02-03T19:05:10+08:00][sql] CONNECT:[ UseTime:0.011967s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:05:10+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000850s ]
+[2023-02-03T19:05:10+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000252s ]
+[2023-02-03T19:05:10+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.001416s ]
+[2023-02-03T19:05:10+08:00][sql] SELECT `e`.`id`,`e`.`qrcode_id`,`e`.`name`,`e`.`avatar`,`e`.`expire_date`,`e`.`members`,IF(e.source=1,IFNULL(e.im,e.im2),NULL) im,`e`.`hide`,`e`.`add_time`,`e`.`company`,`e`.`remark`,`e`.`province`,`e`.`city`,`e`.`district`,GROUP_CONCAT(DISTINCT t.name) tags,`e`.`type`,COUNT(DISTINCT b.id) buy_cnt,`e`.`status` FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 [ RunTime:0.231177s ]
+[2023-02-03T19:05:10+08:00][sql] SELECT COUNT(*) AS think_count FROM ( SELECT count(*) AS think_count FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,e.tags) WHERE  `provider_id` = 1 GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 0,20 ) `_group_count_` LIMIT 1 [ RunTime:0.087444s ]
+[2023-02-03T19:05:12+08:00][sql] CONNECT:[ UseTime:0.001049s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:05:12+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000980s ]
+[2023-02-03T19:05:12+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000459s ]
+[2023-02-03T19:05:18+08:00][sql] CONNECT:[ UseTime:0.001050s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:05:18+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001395s ]
+[2023-02-03T19:05:18+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.001366s ]
+[2023-02-03T19:05:26+08:00][sql] CONNECT:[ UseTime:0.001474s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:05:26+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000883s ]
+[2023-02-03T19:05:26+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.002011s ]
+[2023-02-03T19:05:32+08:00][sql] CONNECT:[ UseTime:0.000903s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:05:32+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001308s ]
+[2023-02-03T19:05:32+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000848s ]
+[2023-02-03T19:05:45+08:00][sql] CONNECT:[ UseTime:0.001387s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:05:45+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000971s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000217s ]
+[2023-02-03T19:05:45+08:00][sql] CONNECT:[ UseTime:0.001362s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:05:45+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000932s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000220s ]
+[2023-02-03T19:05:45+08:00][sql] SHOW FULL COLUMNS FROM `wk_qrcode` [ RunTime:0.000491s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT q.id,q.code,q.company,q.province,q.city,q.district,q.remark,q.status,q.sub_status,q.valid,q.valid_time,q.err_msg,GROUP_CONCAT(t.name) tags,q.add_time FROM `wk_qrcode` `q` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,q.tags) WHERE  `q`.`provider_id` = '1' GROUP BY `q`.`id` LIMIT 0,20 [ RunTime:0.012663s ]
+[2023-02-03T19:05:45+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.001053s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9212'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000345s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9213'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000285s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9214'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000227s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9215'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000232s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10256'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000177s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10257'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000201s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10258'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000158s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10259'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000241s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10260'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000197s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10261'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000161s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10262'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000180s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10263'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000258s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10264'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000218s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10265'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000278s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10266'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000182s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10267'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000160s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10268'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000200s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10269'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000251s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10270'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000156s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10271'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000162s ]
+[2023-02-03T19:05:45+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_qrcode` WHERE  `provider_id` = 1 LIMIT 1 [ RunTime:0.000584s ]
+[2023-02-03T19:06:49+08:00][sql] CONNECT:[ UseTime:0.001327s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:06:49+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001055s ]
+[2023-02-03T19:06:49+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000372s ]
+[2023-02-03T19:06:52+08:00][sql] CONNECT:[ UseTime:0.001467s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:06:52+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000911s ]
+[2023-02-03T19:06:52+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000910s ]
+[2023-02-03T19:06:54+08:00][sql] CONNECT:[ UseTime:0.023838s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:06:54+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001018s ]
+[2023-02-03T19:06:54+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000495s ]
+[2023-02-03T19:06:57+08:00][sql] CONNECT:[ UseTime:0.000954s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:06:57+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000682s ]
+[2023-02-03T19:06:57+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000902s ]
+[2023-02-03T19:07:32+08:00][sql] CONNECT:[ UseTime:0.001643s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:07:32+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000863s ]
+[2023-02-03T19:07:32+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000448s ]
+[2023-02-03T19:07:52+08:00][sql] CONNECT:[ UseTime:0.019512s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:07:52+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000566s ]
+[2023-02-03T19:07:52+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000194s ]
+[2023-02-03T19:07:52+08:00][sql] CONNECT:[ UseTime:0.000859s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:07:52+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000609s ]
+[2023-02-03T19:07:52+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000294s ]
+[2023-02-03T19:08:15+08:00][sql] CONNECT:[ UseTime:0.000954s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:08:15+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001252s ]
+[2023-02-03T19:08:15+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000478s ]
+[2023-02-03T19:09:49+08:00][sql] CONNECT:[ UseTime:0.001142s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:09:49+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000759s ]
+[2023-02-03T19:09:49+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000254s ]
+[2023-02-03T19:09:58+08:00][sql] CONNECT:[ UseTime:0.001399s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:09:58+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000855s ]
+[2023-02-03T19:09:58+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000329s ]
+[2023-02-03T19:10:00+08:00][sql] CONNECT:[ UseTime:0.001505s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:10:00+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001796s ]
+[2023-02-03T19:10:00+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.006480s ]
+[2023-02-03T19:10:08+08:00][sql] CONNECT:[ UseTime:0.001022s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:10:08+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000689s ]
+[2023-02-03T19:10:08+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000225s ]
+[2023-02-03T19:10:11+08:00][sql] CONNECT:[ UseTime:0.002176s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:10:11+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000948s ]
+[2023-02-03T19:10:11+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000612s ]
+[2023-02-03T19:10:26+08:00][sql] CONNECT:[ UseTime:0.001286s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:10:26+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000918s ]
+[2023-02-03T19:10:26+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000309s ]
+[2023-02-03T19:10:27+08:00][sql] CONNECT:[ UseTime:0.001118s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:10:27+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001059s ]
+[2023-02-03T19:10:27+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000382s ]
+[2023-02-03T19:10:28+08:00][sql] CONNECT:[ UseTime:0.002058s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:10:28+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001292s ]
+[2023-02-03T19:10:28+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000370s ]
+[2023-02-03T19:10:29+08:00][sql] CONNECT:[ UseTime:0.000993s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:10:29+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000615s ]
+[2023-02-03T19:10:29+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000213s ]
+[2023-02-03T19:10:31+08:00][sql] CONNECT:[ UseTime:0.023936s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:10:31+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000619s ]
+[2023-02-03T19:10:31+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000158s ]
+[2023-02-03T19:10:32+08:00][sql] CONNECT:[ UseTime:0.001625s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:10:32+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000647s ]
+[2023-02-03T19:10:32+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000241s ]
+[2023-02-03T19:10:34+08:00][sql] CONNECT:[ UseTime:0.000883s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:10:34+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000676s ]
+[2023-02-03T19:10:34+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000925s ]
+[2023-02-03T19:10:38+08:00][sql] CONNECT:[ UseTime:0.020903s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:10:38+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000611s ]
+[2023-02-03T19:10:38+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.003390s ]
+[2023-02-03T19:10:45+08:00][sql] CONNECT:[ UseTime:0.001081s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:10:45+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000907s ]
+[2023-02-03T19:10:45+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000272s ]
+[2023-02-03T19:12:57+08:00][sql] CONNECT:[ UseTime:0.013468s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:12:57+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000634s ]
+[2023-02-03T19:12:57+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000882s ]
+[2023-02-03T19:12:59+08:00][sql] CONNECT:[ UseTime:0.001000s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:12:59+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000647s ]
+[2023-02-03T19:12:59+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000256s ]
+[2023-02-03T19:13:03+08:00][sql] CONNECT:[ UseTime:0.000991s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:13:03+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001604s ]
+[2023-02-03T19:13:03+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.001405s ]
+[2023-02-03T19:19:31+08:00][sql] CONNECT:[ UseTime:0.001049s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:19:31+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000578s ]
+[2023-02-03T19:19:31+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000212s ]
+[2023-02-03T19:28:26+08:00][sql] CONNECT:[ UseTime:0.001055s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:28:26+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000659s ]
+[2023-02-03T19:28:26+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.008574s ]
+[2023-02-03T19:28:28+08:00][sql] CONNECT:[ UseTime:0.001141s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:28:28+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000909s ]
+[2023-02-03T19:28:28+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000173s ]
+[2023-02-03T19:28:32+08:00][sql] CONNECT:[ UseTime:0.001017s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:28:32+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000619s ]
+[2023-02-03T19:28:32+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000814s ]
+[2023-02-03T19:28:41+08:00][sql] CONNECT:[ UseTime:0.010992s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:28:41+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001341s ]
+[2023-02-03T19:28:41+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000567s ]
+[2023-02-03T19:28:55+08:00][sql] CONNECT:[ UseTime:0.001274s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:28:55+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001303s ]
+[2023-02-03T19:28:55+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.001146s ]
+[2023-02-03T19:28:57+08:00][sql] CONNECT:[ UseTime:0.001023s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:28:57+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000636s ]
+[2023-02-03T19:28:57+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.003292s ]
+[2023-02-03T19:29:42+08:00][sql] CONNECT:[ UseTime:0.001881s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:29:42+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000786s ]
+[2023-02-03T19:29:42+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000172s ]
+[2023-02-03T19:34:07+08:00][sql] CONNECT:[ UseTime:0.001060s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:34:07+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000911s ]
+[2023-02-03T19:34:07+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000309s ]
+[2023-02-03T19:37:24+08:00][sql] CONNECT:[ UseTime:0.001095s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:37:24+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001268s ]
+[2023-02-03T19:37:24+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000811s ]
+[2023-02-03T19:38:34+08:00][sql] CONNECT:[ UseTime:0.029796s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:38:34+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.001612s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000580s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `id`,`username`,`score` FROM `wk_provider` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000578s ]
+[2023-02-03T19:38:34+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.002065s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `int_val` FROM `wk_setting` WHERE  `key` = 'entrance_price' LIMIT 1 [ RunTime:0.001967s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `int_val` FROM `wk_setting` WHERE  `key` = 'max_buy_times' LIMIT 1 [ RunTime:0.000586s ]
+[2023-02-03T19:38:34+08:00][sql] SHOW FULL COLUMNS FROM `wk_qrcode` [ RunTime:0.002085s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_qrcode` WHERE  `provider_id` = 1  AND `valid` = 1 LIMIT 1 [ RunTime:0.003610s ]
+[2023-02-03T19:38:34+08:00][sql] CONNECT:[ UseTime:0.002158s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:38:34+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001468s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000786s ]
+[2023-02-03T19:38:34+08:00][sql] CONNECT:[ UseTime:0.012919s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:38:34+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.001715s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.001003s ]
+[2023-02-03T19:38:34+08:00][sql] SHOW FULL COLUMNS FROM `wk_qrcode` [ RunTime:0.001997s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT q.id,q.code,q.company,q.province,q.city,q.district,q.remark,q.status,q.sub_status,q.valid,q.valid_time,q.err_msg,GROUP_CONCAT(t.name) tags,q.add_time FROM `wk_qrcode` `q` LEFT JOIN `wk_tag` `t` ON FIND_IN_SET(t.id,q.tags) WHERE  `q`.`provider_id` = '1' GROUP BY `q`.`id` LIMIT 0,20 [ RunTime:0.019875s ]
+[2023-02-03T19:38:34+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.001616s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9212'  AND `e`.`expire_date` >= NOW() [ RunTime:0.001114s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9213'  AND `e`.`expire_date` >= NOW() [ RunTime:0.001138s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9214'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000967s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '9215'  AND `e`.`expire_date` >= NOW() [ RunTime:0.002756s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10256'  AND `e`.`expire_date` >= NOW() [ RunTime:0.001012s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10257'  AND `e`.`expire_date` >= NOW() [ RunTime:0.001210s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10258'  AND `e`.`expire_date` >= NOW() [ RunTime:0.001032s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10259'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000959s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10260'  AND `e`.`expire_date` >= NOW() [ RunTime:0.001147s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10261'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000799s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10262'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000862s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10263'  AND `e`.`expire_date` >= NOW() [ RunTime:0.001266s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10264'  AND `e`.`expire_date` >= NOW() [ RunTime:0.001179s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10265'  AND `e`.`expire_date` >= NOW() [ RunTime:0.002230s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10266'  AND `e`.`expire_date` >= NOW() [ RunTime:0.001233s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10267'  AND `e`.`expire_date` >= NOW() [ RunTime:0.001046s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10268'  AND `e`.`expire_date` >= NOW() [ RunTime:0.001479s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10269'  AND `e`.`expire_date` >= NOW() [ RunTime:0.001163s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10270'  AND `e`.`expire_date` >= NOW() [ RunTime:0.001237s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `e`.`id`,`e`.`avatar`,`e`.`name`,`e`.`members`,`e`.`qr`,`e`.`expire_date`,`e`.`joinable`,`e`.`reported`,`e`.`add_time` FROM `wk_entrance` `e` WHERE  `e`.`qrcode_id` = '10271'  AND `e`.`expire_date` >= NOW() [ RunTime:0.000880s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_qrcode` WHERE  `provider_id` = 1 LIMIT 1 [ RunTime:0.001434s ]
+[2023-02-03T19:38:34+08:00][sql] CONNECT:[ UseTime:0.001512s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:38:34+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000594s ]
+[2023-02-03T19:38:34+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000215s ]
+[2023-02-03T19:38:36+08:00][sql] CONNECT:[ UseTime:0.001289s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:38:36+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000940s ]
+[2023-02-03T19:38:36+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000381s ]
+[2023-02-03T19:38:38+08:00][sql] CONNECT:[ UseTime:0.018530s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:38:38+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000632s ]
+[2023-02-03T19:38:38+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000216s ]
+[2023-02-03T19:38:39+08:00][sql] CONNECT:[ UseTime:0.001099s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:38:39+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000767s ]
+[2023-02-03T19:38:39+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000297s ]
+[2023-02-03T19:38:44+08:00][sql] CONNECT:[ UseTime:0.000945s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:38:44+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000670s ]
+[2023-02-03T19:38:44+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000845s ]
+[2023-02-03T19:42:29+08:00][sql] CONNECT:[ UseTime:0.000893s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:42:29+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000949s ]
+[2023-02-03T19:42:29+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000242s ]
+[2023-02-03T19:42:39+08:00][sql] CONNECT:[ UseTime:0.013029s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T19:42:39+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000654s ]
+[2023-02-03T19:42:39+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000916s ]
+[2023-02-03T20:21:11+08:00][sql] CONNECT:[ UseTime:0.001843s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T20:21:11+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000905s ]
+[2023-02-03T20:21:11+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.003587s ]
+[2023-02-03T20:22:26+08:00][sql] CONNECT:[ UseTime:0.001155s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T20:22:26+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000767s ]
+[2023-02-03T20:22:26+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000879s ]
+[2023-02-03T20:22:56+08:00][sql] CONNECT:[ UseTime:0.020363s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T20:22:56+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000753s ]
+[2023-02-03T20:22:56+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.006018s ]
+[2023-02-03T20:22:58+08:00][sql] CONNECT:[ UseTime:0.001374s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T20:22:58+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001701s ]
+[2023-02-03T20:22:58+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000826s ]
+[2023-02-03T20:23:04+08:00][sql] CONNECT:[ UseTime:0.000930s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T20:23:04+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000664s ]
+[2023-02-03T20:23:04+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000830s ]
+[2023-02-03T20:24:52+08:00][sql] CONNECT:[ UseTime:0.001158s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T20:24:52+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000884s ]
+[2023-02-03T20:24:52+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000977s ]
+[2023-02-03T20:38:41+08:00][sql] CONNECT:[ UseTime:0.001645s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T20:38:41+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001058s ]
+[2023-02-03T20:38:41+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.001197s ]
+[2023-02-03T20:58:25+08:00][sql] CONNECT:[ UseTime:0.002021s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T20:58:25+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000903s ]
+[2023-02-03T20:58:25+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000911s ]
+[2023-02-03T22:45:31+08:00][sql] CONNECT:[ UseTime:0.001378s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T22:45:31+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000777s ]
+[2023-02-03T22:45:31+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.003488s ]
+[2023-02-03T22:47:16+08:00][sql] CONNECT:[ UseTime:0.001027s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T22:47:16+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001296s ]
+[2023-02-03T22:47:16+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000877s ]
+[2023-02-03T22:48:20+08:00][sql] CONNECT:[ UseTime:0.000963s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T22:48:20+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000720s ]
+[2023-02-03T22:48:20+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000810s ]
+[2023-02-03T22:51:43+08:00][sql] CONNECT:[ UseTime:0.017363s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T22:51:43+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000595s ]
+[2023-02-03T22:51:43+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.016769s ]
+[2023-02-03T22:53:44+08:00][sql] CONNECT:[ UseTime:0.000878s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T22:53:44+08:00][sql] SHOW FULL COLUMNS FROM `wk_provider` [ RunTime:0.000655s ]
+[2023-02-03T22:53:44+08:00][sql] SELECT `id` FROM `wk_provider` WHERE  `id` = 1  AND `relogin` = 0 LIMIT 1 [ RunTime:0.000223s ]
+[2023-02-03T22:53:44+08:00][sql] SELECT `alipay`,`score` FROM `wk_provider` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000176s ]
+[2023-02-03T23:07:35+08:00][sql] CONNECT:[ UseTime:0.000999s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:07:35+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000786s ]
+[2023-02-03T23:07:35+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000793s ]
+[2023-02-03T23:07:38+08:00][sql] CONNECT:[ UseTime:0.024599s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:07:38+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000689s ]
+[2023-02-03T23:07:38+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000276s ]
+[2023-02-03T23:15:13+08:00][sql] CONNECT:[ UseTime:0.022289s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:15:13+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000927s ]
+[2023-02-03T23:15:13+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000444s ]
+[2023-02-03T23:15:14+08:00][sql] CONNECT:[ UseTime:0.001233s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:15:14+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000799s ]
+[2023-02-03T23:15:14+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000507s ]
+[2023-02-03T23:15:23+08:00][sql] CONNECT:[ UseTime:0.001047s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:15:23+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001438s ]
+[2023-02-03T23:15:23+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000705s ]
+[2023-02-03T23:26:04+08:00][sql] CONNECT:[ UseTime:0.001317s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:26:04+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000761s ]
+[2023-02-03T23:26:04+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000307s ]
+[2023-02-03T23:26:36+08:00][sql] CONNECT:[ UseTime:0.000939s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:26:36+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000879s ]
+[2023-02-03T23:26:36+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000651s ]
+[2023-02-03T23:26:38+08:00][sql] CONNECT:[ UseTime:0.001667s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:26:38+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001168s ]
+[2023-02-03T23:26:38+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000751s ]
+[2023-02-03T23:27:10+08:00][sql] CONNECT:[ UseTime:0.000933s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:27:10+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000700s ]
+[2023-02-03T23:27:10+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000182s ]
+[2023-02-03T23:27:12+08:00][sql] CONNECT:[ UseTime:0.001216s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:27:12+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000769s ]
+[2023-02-03T23:27:12+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000501s ]
+[2023-02-03T23:27:44+08:00][sql] CONNECT:[ UseTime:0.000937s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:27:44+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001175s ]
+[2023-02-03T23:27:44+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000547s ]
+[2023-02-03T23:28:59+08:00][sql] CONNECT:[ UseTime:0.000951s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:28:59+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000934s ]
+[2023-02-03T23:28:59+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000194s ]
+[2023-02-03T23:29:20+08:00][sql] CONNECT:[ UseTime:0.000891s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:29:20+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000769s ]
+[2023-02-03T23:29:20+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000325s ]
+[2023-02-03T23:29:20+08:00][sql] CONNECT:[ UseTime:0.001290s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:29:20+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000689s ]
+[2023-02-03T23:29:20+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000194s ]
+[2023-02-03T23:29:21+08:00][sql] CONNECT:[ UseTime:0.001374s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:29:21+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001024s ]
+[2023-02-03T23:29:21+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000324s ]
+[2023-02-03T23:30:42+08:00][sql] CONNECT:[ UseTime:0.001027s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:30:42+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000599s ]
+[2023-02-03T23:30:42+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000176s ]
+[2023-02-03T23:30:58+08:00][sql] CONNECT:[ UseTime:0.000864s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:30:58+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000623s ]
+[2023-02-03T23:30:58+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000187s ]
+[2023-02-03T23:30:59+08:00][sql] CONNECT:[ UseTime:0.001075s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:30:59+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001411s ]
+[2023-02-03T23:30:59+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.001681s ]
+[2023-02-03T23:31:00+08:00][sql] CONNECT:[ UseTime:0.000891s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:31:00+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001079s ]
+[2023-02-03T23:31:00+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000219s ]
+[2023-02-03T23:31:10+08:00][sql] CONNECT:[ UseTime:0.001781s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:31:10+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000907s ]
+[2023-02-03T23:31:10+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000368s ]
+[2023-02-03T23:31:11+08:00][sql] CONNECT:[ UseTime:0.000946s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:31:11+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000908s ]
+[2023-02-03T23:31:11+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000937s ]
+[2023-02-03T23:31:12+08:00][sql] CONNECT:[ UseTime:0.001529s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:31:12+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000610s ]
+[2023-02-03T23:31:12+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000177s ]
+[2023-02-03T23:31:20+08:00][sql] CONNECT:[ UseTime:0.018140s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:31:20+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000635s ]
+[2023-02-03T23:31:20+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000165s ]
+[2023-02-03T23:31:20+08:00][sql] CONNECT:[ UseTime:0.001426s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:31:20+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001139s ]
+[2023-02-03T23:31:20+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000385s ]
+[2023-02-03T23:31:22+08:00][sql] CONNECT:[ UseTime:0.000963s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:31:22+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000623s ]
+[2023-02-03T23:31:22+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000773s ]
+[2023-02-03T23:31:31+08:00][sql] CONNECT:[ UseTime:0.001536s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-03T23:31:31+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000947s ]
+[2023-02-03T23:31:31+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000503s ]

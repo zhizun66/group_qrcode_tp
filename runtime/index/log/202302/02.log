@@ -1,0 +1,3 @@
+[2023-02-02T15:31:03+08:00][sql] CONNECT:[ UseTime:0.020218s ] mysql:host=localhost;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-02T15:31:03+08:00][sql] SHOW FULL COLUMNS FROM `wk_user` [ RunTime:0.005217s ]
+[2023-02-02T15:31:03+08:00][sql] SELECT `id`,`username`,`name`,`enable` FROM `wk_user` WHERE  `username` = '1'  AND `password` = 'c4ca4238a0b923820dcc509a6f75849b' LIMIT 1 [ RunTime:0.001225s ]
