@@ -15,76 +15,35 @@ class Qrcode extends CommonController
   public function index(): Json
   {
     $company = input('company');
-    $tags = input('tags/a');
-    $area = input('area/a');
-    $remark = input('remark');
     $status = input('status/d');
 
 
     $query = $this->db->name('qrcode_ref')->alias('ref')
       ->leftJoin('qrcode q', 'q.id=ref.qrcode_id')
-      ->leftJoin('tag t', 'FIND_IN_SET(t.id,q.tags)')
+      // ->leftJoin('tag t', 'FIND_IN_SET(t.id,q.tags)')
       ->where('ref.user_id', $this->user['id'])
       ->order('ref.id', 'DESC')
       ->group('ref.id')
 
-      ->fieldRaw("ref.id,q.id qrcode_id,q.code,q.company,q.province,q.city,q.district,q.remark,q.status,q.sub_status,q.err_msg,GROUP_CONCAT(t.name) tags,q.add_time");
+      ->fieldRaw("ref.id,q.id qrcode_id,q.code,q.company,q.status,q.err_msg,q.add_time");
 
     if (!empty($status)) {
-      $query->where('q.status', $status);
+      $query->where('q.status', $status - 1);
     }
     if (!empty($company)) {
       $query->whereLike('q.company', "%{$company}%");
     }
-    if (!empty($remark)) {
-      $query->whereLike('q.remark', "%{$remark}%");
-    }
 
-    if (!empty($tags)) {
-      $where = array_reduce($tags, function ($carry, $tag) {
-        return $carry . "FIND_IN_SET({$tag},q.tags) AND ";
-      }, '');
-      $where = rtrim($where, ' AND');
-      $query->whereRaw($where);
-    }
-
-    if (!empty($area)) {
-      array_walk($area, function (&$elem) {
-        if ($elem === 'all') {
-          $elem = null;
-        }
-      });
-      if (!empty($area[0])) {
-        $query->where('q.province', $area[0]);
-      }
-      if (!empty($area[1])) {
-        $query->where('q.city', $area[1]);
-      }
-      if (!empty($area[2])) {
-        $query->where('q.district', $area[2]);
-      }
-    }
     $total = $query->count();
     // 查询活码解析服务费
     $price = $this->getSysSetting('qrcode_decode_price');
     $data = $query->page($this->page, $this->pageSize)->select()->toArray();
 
     foreach ($data as &$item) {
-      $item['tags'] = empty($item['tags']) ? [] : explode(',', $item['tags']);
-
-      $item['area'] = array_filter([$item['province'], $item['city'], $item['district']], function ($elem) {
-        return !is_null($elem);
-      });
-      if (count($item['area']) === 0) {
-        $item['area'] = null;
-      } elseif (count($item['area']) < 3) {
-        $item['area'][] = 'all';
-      }
-
       $subData = Db::name('entrance')->alias('e')
         ->leftJoin('buy b', 'b.entrance_id=e.id')
         ->where('e.qrcode_id', $item['qrcode_id'])
-        ->column("e.id,e.avatar,e.name,e.members,e.qr,{$price} price,e.expire_date,e.joinable,e.status,e.reported,e.add_time,CONVERT(IF(b.user_id = {$this->user['id']},'1','0'),UNSIGNED) 'bought'");
+        ->column("e.id,e.avatar,e.name,e.members,e.qr,{$price} price,e.expire_date,e.joinable_wc,e.status,e.reported,e.add_time,CONVERT(IF(b.user_id = {$this->user['id']},'1','0'),UNSIGNED) 'bought'");
       $item['entrance'] = $subData;
       // $item['price'] = $price;
     }

@@ -14,67 +14,22 @@ class Entrance extends CommonController
   public function index(): Json
   {
     $company = input('company');
-    $remark = input('remark');
-    $area = input('area/a') ?? [];
-    $tags = input('tags/a');
-
     $query = $this->db->name('entrance')->alias('e')
       ->leftJoin('buy b', 'b.entrance_id=e.id')
-      ->leftJoin('tag t', 'FIND_IN_SET(t.id,e.tags)')
+      // ->leftJoin('tag t', 'FIND_IN_SET(t.id,e.tags)')
       ->group('e.id');
-
-    if (!empty($area)) {
-      array_walk($area, function (&$elem) {
-        if ($elem === 'all') {
-          $elem = null;
-        }
-      });
-      if (!empty($area[0])) {
-        $query->where('e.province', $area[0]);
-      }
-      if (!empty($area[1])) {
-        $query->where('e.city', $area[1]);
-      }
-      if (!empty($area[2])) {
-        $query->where('e.district', $area[2]);
-      }
-    }
 
     if (!empty($company)) {
       $query->whereLike('e.company', "%{$company}%");
-    }
-    if (!empty($remark)) {
-      $query->whereLike('e.remark', "%{$company}%");
-    }
-    if (!empty($tags)) {
-      $where = array_reduce($tags, function ($carry, $tag) {
-        return $carry . "FIND_IN_SET({$tag},e.tags) AND ";
-      }, '');
-      $where = rtrim($where, ' AND');
-      $query->whereRaw($where);
     }
 
     $data = $query->where('provider_id', $this->provider['id'])
       ->order('e.id', 'DESC')
       ->page($this->page, $this->pageSize)
-      ->column("e.id,e.qrcode_id,e.name,e.avatar,e.expire_date,e.members,IF(e.source=1,IFNULL(e.im,e.im2),NULL) im,e.hide,e.add_time,e.company,e.remark,e.province,e.city,e.district,GROUP_CONCAT(DISTINCT t.name) tags,e.type,COUNT(DISTINCT b.id) buy_cnt,e.status");
+      ->column("e.id,e.qrcode_id,e.name,e.avatar,e.expire_date,e.members,e.im,e.hide,e.add_time,e.company,e.type,COUNT(DISTINCT b.id) buy_cnt,e.status");
 
     foreach ($data as &$item) {
       $item['im'] = $item['im'] ? $this->request->domain(true) . '/storage/' . $item['im'] : null;
-      $item['tags'] = empty($item['tags']) ? [] : explode(',', $item['tags']);
-
-      $item['area'] = array_filter([$item['province'], $item['city'], $item['district']], function ($elem) {
-        return !is_null($elem);
-      });
-      if (count($item['area']) === 0) {
-        $item['area'] = null;
-      } elseif (count($item['area']) < 3) {
-        $item['area'][] = 'all';
-      }
-
-      unset($item['province']);
-      unset($item['city']);
-      unset($item['district']);
     }
 
     $total = $query->count();
@@ -85,24 +40,24 @@ class Entrance extends CommonController
   public function upload(): Json
   {
     $uid = input('uid');
-    $tags = input('tags');
+    // $tags = input('tags');
     $company = input('company');
-    $area = input('area') ?? [];
-    $name = input('name');
-    $remark = input('remark');
-    $members = input('members');
-    $expire = input('expire');
-    $price = input('price/d');
+    // $area = input('area') ?? [];
+    // $name = input('name');
+    // $remark = input('remark');
+    // $members = input('members');
+    // $expire = input('expire');
+    // $price = input('price/d');
     $type = min(max(input('type/d', 1), 1), 2);
-    $limit = input('limit/d');
+    // $limit = input('limit/d');
 
-    $area = empty($area) ? [] : explode(',', $area);
-    $area = array_map(function ($item) {
-      return $item === 'all' ? null : $item;
-    }, $area);
+    // $area = empty($area) ? [] : explode(',', $area);
+    // $area = array_map(function ($item) {
+    //   return $item === 'all' ? null : $item;
+    // }, $area);
 
-    $tags = empty($tags) ? [] : explode(',', $tags);
-    $tags = array_unique($tags);
+    // $tags = empty($tags) ? [] : explode(',', $tags);
+    // $tags = array_unique($tags);
 
     $uidArr = explode(',', $uid);
 
@@ -145,25 +100,25 @@ class Entrance extends CommonController
 
 
 
-        $saveName = Filesystem::disk('public')->putFile('entrance', $file);
+        // $saveName = Filesystem::disk('public')->putFile('entrance', $file);
 
         $entranceData[] = [
           'provider_id'   => $this->provider['id'],
-          'name'          => empty($name) ? null : $name,
-          'members'       => empty($members) ? null : $members,
+          // 'name'          => empty($name) ? null : $name,
+          // 'members'       => empty($members) ? null : $members,
           'qr'            => $qr,
-          'im'            => $saveName,
-          'im2'           => 'gen/' . basename($path),
-          'expire_date'   => empty($expire) ? null : $expire,
-          'price'         => $price,
+          // 'im'            => $saveName,
+          'im'           => 'gen/' . basename($path),
+          // 'expire_date'   => empty($expire) ? null : $expire,
+          // 'price'         => $price,
           'company'       => empty($company) ? null : $company,
-          'province'      => $area[0] ?? null,
-          'city'          => $area[1] ?? null,
-          'district'      => $area[2] ?? null,
-          'remark'        => empty($remark) ? null : $remark,
-          'tags'          => implode(',', $tags),
+          // 'province'      => $area[0] ?? null,
+          // 'city'          => $area[1] ?? null,
+          // 'district'      => $area[2] ?? null,
+          // 'remark'        => empty($remark) ? null : $remark,
+          // 'tags'          => implode(',', $tags),
           'type'          => $type,
-          'limit'         => $limit
+          // 'limit'         => $limit
         ];
       }
 
@@ -215,16 +170,16 @@ class Entrance extends CommonController
   public function itemEdit(): Json
   {
     $entranceId = input('eid/d');
-    $name = input('name');
-    $members = input('members/d');
-    $expire = input('expire');
+    // $name = input('name');
+    // $members = input('members/d');
+    // $expire = input('expire');
     $company = input('company');
-    $area = input('area/a') ?? [];
-    $remark = input('remark');
+    // $area = input('area/a') ?? [];
+    // $remark = input('remark');
 
-    $area = array_map(function ($item) {
-      return $item === 'all' ? null : $item;
-    }, $area);
+    // $area = array_map(function ($item) {
+    //   return $item === 'all' ? null : $item;
+    // }, $area);
 
     if (!$this->db->name('entrance')->where(['id' => $entranceId, 'provider_id' => $this->provider['id']])->value('id')) {
       return $this->errorJson();
@@ -234,14 +189,14 @@ class Entrance extends CommonController
       $this->db->name('entrance')
         ->where(['id' => $entranceId, 'provider_id' => $this->provider['id']])
         ->update([
-          'name'          => empty($name) ? null : $name,
-          'members'       => empty($members) ? null : $members,
-          'expire_date'   => empty($expire) ? null : $expire,
+          // 'name'          => empty($name) ? null : $name,
+          // 'members'       => empty($members) ? null : $members,
+          // 'expire_date'   => empty($expire) ? null : $expire,
           'company'       => empty($company) ? null : $company,
-          'remark'        => empty($remark) ? null : $remark,
-          'province'      => $area[0] ?? null,
-          'city'          => $area[1] ?? null,
-          'district'      => $area[2] ?? null
+          // 'remark'        => empty($remark) ? null : $remark,
+          // 'province'      => $area[0] ?? null,
+          // 'city'          => $area[1] ?? null,
+          // 'district'      => $area[2] ?? null
         ]);
       return $this->successJson();
     } catch (Exception $e) {

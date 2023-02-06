@@ -11,9 +11,9 @@ class Entrance extends CommonController
   public function index(): Json
   {
     $company = input('company');
-    $remark = input('remark');
-    $area = input('area/a') ?? [];
-    $tags = input('tags/a');
+    // $remark = input('remark');
+    // $area = input('area/a') ?? [];
+    // $tags = input('tags/a');
     $type = input('type/d');
     $group_name = input('group_name');
     $joinable = input('joinable/d');
@@ -23,53 +23,26 @@ class Entrance extends CommonController
     $query = $this->db->name('entrance')->alias('e')
       ->leftJoin('buy b', 'b.entrance_id=e.id')
       ->leftJoin([$sql => 'b2'], 'b2.entrance_id=e.id')
-      ->leftJoin('tag t', 'FIND_IN_SET(t.id,e.tags)')
+      // ->leftJoin('tag t', 'FIND_IN_SET(t.id,e.tags)')
       ->group('e.id');
 
-    if (!empty($area)) {
-      array_walk($area, function (&$elem) {
-        if ($elem === 'all') {
-          $elem = null;
-        }
-      });
-      if (!empty($area[0])) {
-        $query->where('e.province', $area[0]);
-      }
-      if (!empty($area[1])) {
-        $query->where('e.city', $area[1]);
-      }
-      if (!empty($area[2])) {
-        $query->where('e.district', $area[2]);
-      }
-    }
+
 
     if (!empty($company)) {
       $query->whereLike('e.company', "%{$company}%");
     }
-    if (!empty($remark)) {
-      $query->whereLike('e.remark', "%{$company}%");
-    }
     if (!empty($group_name)) {
       $query->whereLike('e.name', "%{$group_name}%");
-    }
-    if (!empty($tags)) {
-      $where = array_reduce($tags, function ($carry, $tag) {
-        return $carry . "FIND_IN_SET({$tag},e.tags) AND ";
-      }, '');
-      $where = rtrim($where, ' AND');
-      $query->whereRaw($where);
     }
     if (!empty($type)) {
       $query->where('type', $type);
     }
     if (!empty($joinable)) {
       $joinable = $joinable - 1;
-      // var_dump($joinable);
-      $query->where('joinable', $joinable);
+      $query->where('joinable_wc', $joinable);
     }
     if (!empty($status)) {
       $status = $status - 1;
-      // var_dump($joinable);
       $query->where('status', $status);
     }
 
@@ -78,28 +51,11 @@ class Entrance extends CommonController
     $data = $query->order('e.id', 'DESC')
       //没到期的
       ->page($this->page, $this->pageSize)
-      ->column("e.id,e.qrcode_id,e.name,e.avatar,e.expire_date,e.members,e.qr,IFNULL(e.im,e.im2) im,e.hide,e.update_time,e.add_time,e.company,e.province,e.city,e.district,e.status,e.joinable,e.error_msg,GROUP_CONCAT(DISTINCT t.name) tags,e.type,COUNT(DISTINCT b.id) buy_cnt,COUNT(DISTINCT b2.id) buy_cnt_month");
+      ->column("e.id,e.qrcode_id,e.name,e.avatar,e.expire_date,e.members,e.qr,e.im,e.hide,e.update_time,e.add_time,e.company,e.status,e.joinable_wc,e.error_msg,e.type,COUNT(DISTINCT b.id) buy_cnt,COUNT(DISTINCT b2.id) buy_cnt_month");
 
     foreach ($data as &$item) {
       $item['im'] = $this->request->domain(true) . '/storage/' . $item['im'];
-      $item['tags'] = empty($item['tags']) ? [] : explode(',', $item['tags']);
-
-      $item['area'] = array_filter([$item['province'], $item['city'], $item['district']], function ($elem) {
-        return !is_null($elem);
-      });
-      if (count($item['area']) === 0) {
-        $item['area'] = null;
-      } elseif (count($item['area']) < 3) {
-        $item['area'][] = 'all';
-      }
-
-      unset($item['province']);
-      unset($item['city']);
-      unset($item['district']);
     }
-
-
-
     return $this->successJson($this->paginate($data, $total));
   }
 

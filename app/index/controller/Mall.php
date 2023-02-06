@@ -17,10 +17,10 @@ class Mall extends CommonController
   {
 
     $company = input('company');
-    $remark = input('remark');
+    // $remark = input('remark');
     $group_name = input('group_name');
-    $area = input('area/a') ?? [];
-    $tags = input('tags/a');
+    // $area = input('area/a') ?? [];
+    // $tags = input('tags/a');
     $type = input('type/d');
     $joinable = input('joinable/d');
 
@@ -30,7 +30,7 @@ class Mall extends CommonController
     $query = $this->db->name('entrance')->alias('e')
       ->leftJoin([$buyRecordSql => 'b2'], 'b2.entrance_id=e.id')
       ->leftJoin([$buyCountSql => 'b1'], 'b1.entrance_id=e.id')
-      ->leftJoin('tag t', 'FIND_IN_SET(t.id,e.tags)')
+      // ->leftJoin('tag t', 'FIND_IN_SET(t.id,e.tags)')
       ->group('e.id');
 
 
@@ -46,45 +46,18 @@ class Mall extends CommonController
     // $query->whereRaw('e.limit > IFNULL(b1.buy_cnt_month,0)');
 
 
-    if (!empty($area)) {
-      array_walk($area, function (&$elem) {
-        if ($elem === 'all') {
-          $elem = null;
-        }
-      });
-      if (!empty($area[0])) {
-        $query->where('e.province', $area[0]);
-      }
-      if (!empty($area[1])) {
-        $query->where('e.city', $area[1]);
-      }
-      if (!empty($area[2])) {
-        $query->where('e.district', $area[2]);
-      }
-    }
 
     if (!empty($company)) {
       $query->whereLike('e.company', "%{$company}%");
     }
-    if (!empty($remark)) {
-      $query->whereLike('e.remark', "%{$company}%");
-    }
     if (!empty($group_name)) {
       $query->whereLike('e.name', "%{$group_name}%");
-    }
-    if (!empty($tags)) {
-      $where = array_reduce($tags, function ($carry, $tag) {
-        return $carry . "FIND_IN_SET({$tag},e.tags) AND ";
-      }, '');
-      $where = rtrim($where, ' AND');
-      $query->whereRaw($where);
     }
     if (!empty($type)) {
       $query->where('e.type', $type);
     }
     if (!empty($joinable)) {
-
-      $query->where('e.joinable', $joinable);
+      $query->where('e.joinable_wc', $joinable);
     }
 
     // $query->where('e.user_id', '<>', 2);
@@ -99,23 +72,12 @@ class Mall extends CommonController
       // COUNT(DISTINCT b2.id)
       ->order('e.update_time', 'DESC')
 
-      ->column("e.id,e.company,e.province,e.city,e.district,e.remark,e.avatar,e.name,e.members,e.status,e.expire_date,e.joinable,e.update_time,e.add_time,GROUP_CONCAT(DISTINCT t.name) tags,GROUP_CONCAT(DISTINCT t.id) tags_id,e.qr,e.im,e.im2,e.type");
+      ->column("e.id,e.company,e.avatar,e.name,e.members,e.status,e.expire_date,e.joinable_wc,e.update_time,e.add_time,e.qr,e.im,e.type");
     foreach ($data as &$item) {
-      $item['tags'] = empty($item['tags']) ? [] : explode(',', $item['tags']);
 
+      $price_joinable = $item['joinable_wc'] == 1 ? $price_entrance_work_joinable : 0;
+      // $item['price'] =  $item['status'] == 1 ? $price_joinable + $this->getTagsPrice($item['tags_id']) : $price_entrance_status_0;
 
-      $price_joinable = $item['joinable'] == 1 ? $price_entrance_work_joinable : 0;
-      $item['price'] =  $item['status'] == 1 ? $price_joinable + $this->getTagsPrice($item['tags_id']) : $price_entrance_status_0;
-
-
-      $item['area'] = array_filter([$item['province'], $item['city'], $item['district']], function ($elem) {
-        return !is_null($elem);
-      });
-      if (count($item['area']) === 0) {
-        $item['area'] = null;
-      } elseif (count($item['area']) < 3) {
-        $item['area'][] = 'all';
-      }
 
 
       // if ($item['bought'] === 1) {
@@ -124,10 +86,7 @@ class Mall extends CommonController
       //   }
       //   $item['im2'] = $this->request->domain(true) . '/storage/' . $item['im2'];
       // } else {
-      unset($item['im'], $item['im2'], $item['qr']);
-      // }
-
-      unset($item['province'], $item['city'], $item['district']);
+      unset($item['im'],  $item['qr']);
     }
 
     return $this->successJson($this->paginate($data, $total));
@@ -314,11 +273,12 @@ class Mall extends CommonController
         $info = $this->db->name('entrance')->alias('e')
 
           ->where('e.id', $item)
-          ->field('e.id,e.status,e.joinable,e.tags')->findOrEmpty();
+          ->field('e.id,e.status,e.joinable_wc')->findOrEmpty();
         // var_dump('joinable' . $info['joinable']);
 
-        $price_joinable = $info['joinable'] == 1 ? $price_entrance_work_joinable : 0;
-        $price =  $info['status'] == 1 ? $price_joinable + $this->getTagsPrice($info['tags']) : $price_entrance_status_0;
+        $price_joinable = $info['joinable_wc'] == 1 ? $price_entrance_work_joinable : 0;
+        $price = 60;
+        // $price =  $info['status'] == 1 ? $price_joinable + $this->getTagsPrice($info['tags']) : $price_entrance_status_0;
         // var_dump('价格' . $price);
 
         $this->db->name('buy')->insert([
