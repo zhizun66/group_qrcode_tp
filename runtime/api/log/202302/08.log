@@ -1,0 +1,40 @@
+[2023-02-08T16:50:33+08:00][sql] CONNECT:[ UseTime:0.001783s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-08T16:50:33+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.002802s ]
+[2023-02-08T16:50:33+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.000535s ]
+[2023-02-08T17:48:43+08:00][sql] CONNECT:[ UseTime:0.002074s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-08T17:48:43+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.003478s ]
+[2023-02-08T17:48:43+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.000342s ]
+[2023-02-08T17:48:43+08:00][sql] SHOW FULL COLUMNS FROM `wk_manager` [ RunTime:0.001048s ]
+[2023-02-08T17:48:43+08:00][sql] SELECT `id`,`username`,`enable` FROM `wk_manager` WHERE  `username` = 'zhizun66'  AND `password` = '7aa63486c30bc082bcfe79d4ec3c1969' LIMIT 1 [ RunTime:0.000794s ]
+[2023-02-08T17:49:02+08:00][sql] CONNECT:[ UseTime:0.001380s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-08T17:49:02+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.001370s ]
+[2023-02-08T17:49:02+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.000286s ]
+[2023-02-08T17:49:02+08:00][sql] SHOW FULL COLUMNS FROM `wk_manager` [ RunTime:0.000700s ]
+[2023-02-08T17:49:02+08:00][sql] SELECT `id`,`username`,`enable` FROM `wk_manager` WHERE  `username` = 'zhizun66'  AND `password` = '7aa63486c30bc082bcfe79d4ec3c1969' LIMIT 1 [ RunTime:0.000137s ]
+[2023-02-08T17:49:16+08:00][sql] CONNECT:[ UseTime:0.001397s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-08T17:49:16+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.001411s ]
+[2023-02-08T17:49:16+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.000319s ]
+[2023-02-08T17:49:16+08:00][sql] SHOW FULL COLUMNS FROM `wk_manager` [ RunTime:0.001087s ]
+[2023-02-08T17:49:16+08:00][sql] SELECT `id`,`username`,`enable` FROM `wk_manager` WHERE  `username` = 'zhizun66'  AND `password` = '7aa63486c30bc082bcfe79d4ec3c1969' LIMIT 1 [ RunTime:0.000319s ]
+[2023-02-08T17:49:54+08:00][sql] CONNECT:[ UseTime:0.019036s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-08T17:49:54+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.000891s ]
+[2023-02-08T17:49:54+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.000234s ]
+[2023-02-08T17:49:54+08:00][sql] SHOW FULL COLUMNS FROM `wk_manager` [ RunTime:0.000686s ]
+[2023-02-08T17:49:54+08:00][sql] SELECT `id`,`username`,`enable` FROM `wk_manager` WHERE  `username` = 'zhizun'  AND `password` = '18654b2cd47d004109ca5ee404e002a3' LIMIT 1 [ RunTime:0.000230s ]
+[2023-02-08T17:49:54+08:00][sql] UPDATE `wk_manager`  SET `relogin` = 0  WHERE  `id` = 1 [ RunTime:0.004344s ]
+[2023-02-08T18:47:38+08:00][sql] CONNECT:[ UseTime:0.001917s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-08T18:47:38+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.002610s ]
+[2023-02-08T18:47:38+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.000237s ]
+[2023-02-08T18:47:38+08:00][sql] SHOW FULL COLUMNS FROM `wk_manager` [ RunTime:0.001087s ]
+[2023-02-08T18:47:38+08:00][sql] SELECT `id`,`username`,`enable` FROM `wk_manager` WHERE  `username` = 'zhizun'  AND `password` = '18654b2cd47d004109ca5ee404e002a3' LIMIT 1 [ RunTime:0.000703s ]
+[2023-02-08T18:47:38+08:00][sql] UPDATE `wk_manager`  SET `relogin` = 0  WHERE  `id` = 1 [ RunTime:0.004371s ]
+[2023-02-08T19:09:12+08:00][sql] CONNECT:[ UseTime:0.002205s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-08T19:09:12+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.004583s ]
+[2023-02-08T19:09:12+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.001423s ]
+[2023-02-08T19:09:12+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.003679s ]
+[2023-02-08T19:09:12+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `uin` = '1688850353288494'  AND `add_time` BETWEEN '2023-02-08 00:00:00' AND '2023-02-08 23:59:59' LIMIT 1 [ RunTime:4.755126s ]
+[2023-02-08T19:09:13+08:00][sql] CONNECT:[ UseTime:0.001849s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-08T19:09:13+08:00][sql] SHOW FULL COLUMNS FROM `wk_setting` [ RunTime:0.001793s ]
+[2023-02-08T19:09:13+08:00][sql] SELECT `key` FROM `wk_setting` WHERE  `key` = 'api_key'  AND `str_val` = 'MTIzcXdlIUAj' LIMIT 1 [ RunTime:0.000688s ]
+[2023-02-08T19:09:13+08:00][sql] SHOW FULL COLUMNS FROM `wk_record` [ RunTime:0.004495s ]
+[2023-02-08T19:09:13+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_record` WHERE  `status` = 1  AND `uin` = '1688850353288494'  AND `add_time` BETWEEN '2023-02-08 00:00:00' AND '2023-02-08 23:59:59' LIMIT 1 [ RunTime:0.872558s ]

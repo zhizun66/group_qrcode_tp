@@ -1,0 +1,78 @@
+[2023-02-09T19:12:53+08:00][sql] CONNECT:[ UseTime:0.001116s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:12:53+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001727s ]
+[2023-02-09T19:12:53+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000350s ]
+[2023-02-09T19:16:37+08:00][sql] CONNECT:[ UseTime:0.007030s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:16:37+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000942s ]
+[2023-02-09T19:16:37+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000187s ]
+[2023-02-09T19:16:38+08:00][sql] CONNECT:[ UseTime:0.000556s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:16:38+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000663s ]
+[2023-02-09T19:16:38+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000156s ]
+[2023-02-09T19:16:39+08:00][sql] CONNECT:[ UseTime:0.000592s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:16:39+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000619s ]
+[2023-02-09T19:16:39+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000143s ]
+[2023-02-09T19:16:40+08:00][sql] CONNECT:[ UseTime:0.000650s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:16:40+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001404s ]
+[2023-02-09T19:16:40+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000669s ]
+[2023-02-09T19:16:43+08:00][sql] CONNECT:[ UseTime:0.001600s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:16:43+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000704s ]
+[2023-02-09T19:16:43+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000247s ]
+[2023-02-09T19:16:46+08:00][sql] CONNECT:[ UseTime:0.000808s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:16:46+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000639s ]
+[2023-02-09T19:16:46+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000198s ]
+[2023-02-09T19:17:00+08:00][sql] CONNECT:[ UseTime:0.000931s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:17:00+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000598s ]
+[2023-02-09T19:17:00+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000155s ]
+[2023-02-09T19:17:07+08:00][sql] CONNECT:[ UseTime:0.000725s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:17:07+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000765s ]
+[2023-02-09T19:17:07+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000307s ]
+[2023-02-09T19:17:10+08:00][sql] CONNECT:[ UseTime:0.000589s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:17:10+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000661s ]
+[2023-02-09T19:17:10+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000164s ]
+[2023-02-09T19:17:11+08:00][sql] CONNECT:[ UseTime:0.000567s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:17:11+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000624s ]
+[2023-02-09T19:17:11+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000219s ]
+[2023-02-09T19:17:23+08:00][sql] CONNECT:[ UseTime:0.001768s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:17:23+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000920s ]
+[2023-02-09T19:17:23+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.001208s ]
+[2023-02-09T19:18:43+08:00][sql] CONNECT:[ UseTime:0.000411s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:18:43+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000721s ]
+[2023-02-09T19:18:43+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000283s ]
+[2023-02-09T19:18:44+08:00][sql] CONNECT:[ UseTime:0.000631s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:18:44+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000658s ]
+[2023-02-09T19:18:44+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000281s ]
+[2023-02-09T19:18:44+08:00][sql] CONNECT:[ UseTime:0.000559s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:18:44+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000709s ]
+[2023-02-09T19:18:44+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000149s ]
+[2023-02-09T19:18:45+08:00][sql] CONNECT:[ UseTime:0.000737s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:18:45+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000700s ]
+[2023-02-09T19:18:45+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000260s ]
+[2023-02-09T19:18:51+08:00][sql] CONNECT:[ UseTime:0.000699s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:18:51+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000790s ]
+[2023-02-09T19:18:51+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000237s ]
+[2023-02-09T19:18:54+08:00][sql] CONNECT:[ UseTime:0.000578s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:18:54+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000707s ]
+[2023-02-09T19:18:54+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000237s ]
+[2023-02-09T19:18:58+08:00][sql] CONNECT:[ UseTime:0.000747s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:18:58+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000842s ]
+[2023-02-09T19:18:58+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000191s ]
+[2023-02-09T19:18:59+08:00][sql] CONNECT:[ UseTime:0.000617s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:18:59+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000585s ]
+[2023-02-09T19:18:59+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000165s ]
+[2023-02-09T19:19:00+08:00][sql] CONNECT:[ UseTime:0.017767s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:19:00+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000686s ]
+[2023-02-09T19:19:00+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000128s ]
+[2023-02-09T19:19:05+08:00][sql] CONNECT:[ UseTime:0.000656s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:19:05+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000828s ]
+[2023-02-09T19:19:05+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000385s ]
+[2023-02-09T19:19:16+08:00][sql] CONNECT:[ UseTime:0.000642s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:19:16+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000804s ]
+[2023-02-09T19:19:16+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000205s ]
+[2023-02-09T19:19:16+08:00][sql] CONNECT:[ UseTime:0.000703s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:19:16+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000683s ]
+[2023-02-09T19:19:16+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000196s ]
+[2023-02-09T19:19:17+08:00][sql] CONNECT:[ UseTime:0.000842s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:19:17+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.001712s ]
+[2023-02-09T19:19:17+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000313s ]
+[2023-02-09T19:19:17+08:00][sql] CONNECT:[ UseTime:0.001044s ] mysql:host=127.0.0.1;port=3306;dbname=c2;charset=utf8mb4
+[2023-02-09T19:19:17+08:00][sql] SHOW FULL COLUMNS FROM `wk_tag` [ RunTime:0.000974s ]
+[2023-02-09T19:19:17+08:00][sql] SELECT `id`,`name` FROM `wk_tag` ORDER BY `id` [ RunTime:0.000279s ]
