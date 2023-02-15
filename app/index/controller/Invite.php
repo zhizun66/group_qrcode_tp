@@ -31,7 +31,7 @@ class Invite extends CommonController
   public function inviteUrl(): Json
   {
     $outerId = $this->db->name('user')->where('id', $this->user['id'])->value('outer_id');
-    $url = $this->request->domain(true) . '/rest/index/user/invite?p=' . $outerId;
+    $url = $this->request->domain() . '/rest/index/user/invite?p=' . $outerId;
     return $this->successJson(['url' => $url]);
   }
 

@@ -74,4 +74,10 @@ class Provider extends CommonController
       return $this->errorJson();
     }
   }
+
+    public function inviteUrl(): Json
+    {
+        $url = $this->request->domain() . '/rest/provider/base/invite?inviter=' . $this->manager['id'];
+        return $this->successJson(['url' => $url]);
+    }
 }

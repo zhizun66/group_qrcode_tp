@@ -56,7 +56,7 @@ class User extends BaseController
     $inviteUserId = session('invite_user_id');
     if (empty($inviteUserId)) {
       return $this->errorJson(2, '请通过邀请链接注册');
-    };
+    }
 
 
     if ($inviteUserId == 1 || $inviteUserId == 29 || $inviteUserId == 30) {
@@ -96,6 +96,6 @@ class User extends BaseController
       session('invite_user_id', $inviteUserId);
     }
 
-    header('location:' . $this->request->domain(true) . '/login.html');
+    header('location:' . $this->request->domain() . '/login.html');
   }
 }

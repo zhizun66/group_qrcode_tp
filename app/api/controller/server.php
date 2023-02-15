@@ -53,7 +53,7 @@ class server extends CommonController
 
     try {
       $fetchSql = $this->db->name('fetch')
-        ->where('use_time', '<', time() - 518400) //距离上一次检测超过6天
+        ->where('use_time', '>', time() - 518400) //距离上一次检测超过6天
         ->group('qrcode_id')
         ->fieldRaw('COUNT(*) cnt,qrcode_id')->buildSql();
       $info = $this->db->name('qrcode')->alias('q')
@@ -89,7 +89,7 @@ class server extends CommonController
     $name       = input('name');    // 群名称
     $status    = input('status'); // 状态 0、解析中；1、群已满
     $errMsg    = input('errMsg');
-    var_dump($status);
+    // var_dump($status);
     if (!$status == 0) { //活码群已满 无法再解析
       try {
         $a = $this->db->name('qrcode')->where('id', $qrcodeId)->update([
@@ -124,7 +124,7 @@ class server extends CommonController
       // 生成二维码
       $path = $this->app->getRootPath() . 'public/storage/gen/' . Str::substr($qr, 23) . '.png';
       // $path = @tempnam($this->app->getRootPath() . 'public/storage/gen', '') . '.png';
-      $options = new QROptions(['scale' => 10]);
+      $options = new QROptions(['scale' => 10, 'imageTransparent' => false]);
       (new QRcode($options))->render($qr, $path);
     } catch (\Exception $e) {
       return $this->errorJson(3, '生成二维码失败' . ($e->getMessage()));

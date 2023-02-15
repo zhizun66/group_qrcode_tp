@@ -1,1 +1,1 @@
-a:2:{s:4:"user";a:3:{s:2:"id";i:1;s:8:"username";s:6:"zhizun";s:4:"name";s:6:"zhizun";}s:5:"admin";a:2:{s:2:"id";i:1;s:8:"username";s:5:"admin";}}
+a:4:{s:4:"user";a:3:{s:2:"id";i:1;s:8:"username";s:6:"zhizun";s:4:"name";s:6:"zhizun";}s:5:"admin";a:2:{s:2:"id";i:1;s:8:"username";s:5:"admin";}s:8:"provider";a:3:{s:2:"id";i:1;s:8:"username";s:6:"zhizun";s:5:"score";i:1;}s:7:"manager";a:2:{s:2:"id";i:1;s:8:"username";s:6:"zhizun";}}

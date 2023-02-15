@@ -38,13 +38,13 @@ class Index extends CommonController
   public function getUinInfo(): Json
   {
     $uin = input('uin');
-    $manager_id = input('manager_id/d');
+    // $manager_id = input('manager_id/d');
     $status = input('status');
-    $info = $this->db->name('manager')->where(['id' => $manager_id])
-      ->findOrEmpty();
-    if (empty($info)) {
-      return $this->errorJson(1, '账号不存在');
-    }
+    // $info = $this->db->name('manager')->where(['id' => $manager_id])
+    //   ->findOrEmpty();
+    // if (empty($info)) {
+    //   return $this->errorJson(1, '账号不存在');
+    // }
     try {
       if ($status == "all") {
         $info = $this->db->name('record')->where(['uin' => $uin])->whereTime('add_time', 'today')->count();
@@ -138,7 +138,7 @@ class Index extends CommonController
     // $name       = input('name');    // 群名称
     $members    = input('members'); // 成员数
     $room_id    = input('room_id'); //群ID
-    $joinable    = input('joinable/d'); // 企微是否能进
+    $joinable_wc    = input('joinable/d'); // 企微是否能进
     $status    = input('status/d'); // 状态 1、二维码到期 2、群满200人无法扫码进群
     $isjoin = input('isjoin/d');
     $error       = input('error');    // 错误信息
@@ -161,10 +161,12 @@ class Index extends CommonController
     }
     $this->db->startTrans();
     try {
+      $joinable_wx = $joinable_wc == 3 ? 3 : 1;
       $this->db->name('entrance')->where('id', $id)->update([
         'members'       => $members,
         // 'name'       => $name,
-        'joinable_wc'       => $joinable,
+        'joinable_wc'       => $joinable_wc,
+        'joinable_wx'       => $joinable_wx,
         'status'        => $status,
         'room_id'       => $room_id,
         'update_time'       => date('Y-m-d H:i:s', time()),
@@ -173,10 +175,10 @@ class Index extends CommonController
       $this->db->name('record')->where('id', $rid)->update(['status' =>  $isjoin]);
 
       //审核provider上传的活码
-      if ($joinable == 1 && $members >= 60) {
+      if ($joinable_wc == 1 && $members >= 60) {
         $qrcode_id = $this->db->name('entrance')->where('id', $id)->value('qrcode_id');
         if (!empty($qrcode_id)) {
-          $this->db->name('qrcode')->where('id', $qrcode_id)->update(['valid' => $joinable, 'valid_time' =>  date('Y-m-d H:i:s', time())]);
+          $this->db->name('qrcode')->where('id', $qrcode_id)->update(['valid' => $joinable_wc, 'valid_time' =>  date('Y-m-d H:i:s', time())]);
         }
       }
       // $this->db->name('fetch')->insert(['qrcode_id' => $qrcodeId, 'wxid' => $wxid]);
@@ -186,5 +188,49 @@ class Index extends CommonController
       $this->db->rollback();
       return $this->errorJson(4, '插入数据失败' . ($e->getMessage()));
     }
+  }
+
+
+  public function test1()
+  {
+    try {
+      $data = $this->db->name('qrcode')->where('user_id', '<>', null)->where('provider_id', null)->update(['user_id' => null, 'provider_id' => 1]);
+      // var_dump($data);
+
+
+      // , 'status' => 1])->update(['valid' => 2, 'valid_time' =>  date('Y-m-d H:i:s', time())]);
+      return $this->successJson();
+    } catch (\Exception $e) {
+      return $this->errorJson(3, '生成二维码失败' . $e->getMessage());
+    }
+    // try {
+    //   $data = $this->db->name('qrcode')->where(['provider_id' => 2, 'status' => 1])->update(['valid' => 2, 'valid_time' =>  date('Y-m-d H:i:s', time())]);
+    //   return $this->successJson();
+    // } catch (\Exception $e) {
+    //   return $this->errorJson(3, '生成二维码失败' . $e->getMessage());
+    // }
+    // $this->db->name('entrance')->where('expire_date', '<', $this->db->raw('NOW()'))->delete();
+    // $count = $this->db->name('qrcode')->where(['provider_id' => 2, 'valid' => 1])->count();
+    // ->where('join_time', '<', time() - 21600)
+    // $count =  $this->db->name('entrance')->whereBetween('members', [50, 199])->where(['joinable' => 1, 'status' => 1])->where('join_time', '<', time() - 7200)->where('expire_date', '>=', $this->db->raw('NOW()'))->count();
+    // $count = $this->db->name('entrance')->where('expire_date', '>=', $this->db->raw('NOW()'))->count();
+
+    // var_dump($count);
+    // $this->db->name('record')->where(1, 1)->update(['add_time' => "2022-11-27 15:22:29"]);
+    // $this->db->name('entrance')->where('members', null)->update(['joinable' => 0, 'status' => 0, 'get_time' => 0]);
+    // $this->db->name('entrance')->where('members', '>', 0)->where(['joinable' => 0, 'status' => 2])->update(['joinable' => 1, 'status' => 1]);
+    // $name = '军队';
+    // $data = $this->db->name('entrance')->whereLike('name', "%{$name}%")->column('name,qrcode_id');
+    // foreach ($data as &$item) {
+    //   var_dump($item['name'] . '    qr_id:' . $item['qrcode_id']);
+    // }
+
+    // $this->db->name('entrance')->where(1, 1)->update(['join_cnt' => 0]);
+    return $this->successJson();
+    // $this->db->name('qrcode')->where(1, 1)->update(['status' => 0]);
+
+    // } catch (\Exception $e) {
+    //   return $this->errorJson(4, '插入数据失败' . ($e->getMessage()));
+    // }
   }
 }

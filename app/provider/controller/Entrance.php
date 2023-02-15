@@ -39,7 +39,7 @@ class Entrance extends CommonController
 
   public function upload(): Json
   {
-    $uid = input('uid');
+    //$uid = input('uid');
     // $tags = input('tags');
     $company = input('company');
     // $area = input('area') ?? [];
@@ -59,11 +59,13 @@ class Entrance extends CommonController
     // $tags = empty($tags) ? [] : explode(',', $tags);
     // $tags = array_unique($tags);
 
-    $uidArr = explode(',', $uid);
+//    $uidArr = explode(',', $uid);
+//
+//    $qrArr = array_map(function ($uid) {
+//      return input('decode_' . $uid);
+//    }, $uidArr);
 
-    $qrArr = array_map(function ($uid) {
-      return input('decode_' . $uid);
-    }, $uidArr);
+      $qrArr = input('decode/a') ?? [];
 
     // 检测群码是否重复
     if (count(array_unique($qrArr)) < count($qrArr)) {
@@ -84,19 +86,19 @@ class Entrance extends CommonController
 
     try {
       $entranceData = [];
-      foreach ($uidArr as $uid) {
-        $qr = input('decode_' . $uid, '');
+      foreach ($qrArr as $qr) {
+        //$qr = input('decode_' . $uid, '');
         // 生成二维码
         $path = tempnam($this->app->getRootPath() . 'public/storage/gen', '') . '.png';
         $options = new QROptions(['scale' => 10]);
         (new QRcode($options))->render($qr, $path);
 
-        $file = $this->request->file('qrcode_' . $uid);
+        /*$file = $this->request->file('qrcode_' . $uid);
         try {
           validate(['image' => 'fileSize:1024|fileExt:jpg,jpeg,png'])->check($file);
         } catch (Exception $e) {
           return $this->errorJson(-3, $e->getMessage());
-        }
+        }*/
 
 
 
@@ -118,6 +120,7 @@ class Entrance extends CommonController
           // 'remark'        => empty($remark) ? null : $remark,
           // 'tags'          => implode(',', $tags),
           'type'          => $type,
+            'avatar' => 'gen/' . basename($path)
           // 'limit'         => $limit
         ];
       }

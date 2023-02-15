@@ -111,12 +111,12 @@ class Qrcode extends CommonController
             'user_id' => $this->user['id'],
             'code' => $qr,
             'company' => $company,
-            'province' => $area[0] ?? null,
-            'city' => $area[1] ?? null,
-            'district' => $area[2] ?? null,
-            'remark' => empty($remark) ? null : $remark,
-            'tags' => implode(',', $tags),
-            'sub_status' => $subStatus,
+            //'province' => $area[0] ?? null,
+            //'city' => $area[1] ?? null,
+            //'district' => $area[2] ?? null,
+            //'remark' => empty($remark) ? null : $remark,
+            //'tags' => implode(',', $tags),
+            //'sub_status' => $subStatus,
           ]);
         }
         if (!$this->db->name('qrcode_ref')->where(['qrcode_id' => $qrcodeId, 'user_id' => $this->user['id']])->value('id')) {

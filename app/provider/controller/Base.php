@@ -56,11 +56,29 @@ class Base extends BaseController
             return $this->errorJson(1, '用户名已存在');
         }
 
+        $inviteManagerId = session('invite_manager_id');
+        if (empty($inviteManagerId)) {
+            return $this->errorJson(2, '请通过邀请链接注册');
+        }
+
         try {
-            $this->db->name('provider')->insert(['username' => $username, 'password' => md5($password), 'name' => $name]);
+            $this->db->name('provider')->insert(['username' => $username, 'password' => md5($password), 'name' => $name, 'manager_id' => $inviteManagerId]);
             return $this->successJson();
         } catch (Exception) {
             return $this->errorJson(-2);
         }
+    }
+
+    public function invite()
+    {
+        $inviterId = input('inviter');
+
+        $inviteUserId = $this->db->name('manager')->where('id', $inviterId)->value('id');
+        if ($inviteUserId) {
+            session('invite_manager_id', $inviteUserId);
+            cookie('_invite_', '1');
+        }
+
+        header('location:' . $this->request->domain() . '/login.html?provider');
     }
 }
