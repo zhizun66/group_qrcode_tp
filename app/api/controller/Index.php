@@ -79,20 +79,22 @@ class Index extends CommonController
     $this->db->startTrans();
     try {
       $query = $this->db->name('entrance') //->lock(true);
-        ->whereTime('get_time', '<', time() - 21600)
+
         ->whereIn('provider_id', function ($q) use ($manager_id) {
           $q->name('provider')->where('manager_id', $manager_id)->field('id');
         });
       if ($modle == 1) {
-        $query->whereIn('status', [0, 1])
+        $query
+          // ->whereIn('status', [0, 1])
+          ->whereTime('get_time', '<', time() - 86400)
           ->whereIn('joinable_wc', [0, 1])
-          ->order(['status', 'joinable_wc' => 'asc']);
+          ->order(['joinable_wc' => 'asc']);
         //->order(['members' => 'DESC']);
       } elseif ($modle == 2) {
         $query
           ->whereBetween('members', [$members_min, $members_max])
           ->where(['status' => 1, 'joinable_wc' => 1])
-          ->whereTime('join_time', '<', time() - 7200)
+          ->whereTime('join_time', '<', time() - 3600)
           ->order(['id' => 'DESC']);
       } elseif ($modle == 3) {
         $query
@@ -134,8 +136,8 @@ class Index extends CommonController
     $id   = input('id');      // 群码ID
     $rid = input('rid');
     // $uin       = input('uin');    // uin
-    // $avatar     = input('avatar');  // 头像url
-    // $name       = input('name');    // 群名称
+    $avatar     = input('avatar');  // 头像url
+    $name       = input('name');    // 群名称
     $members    = input('members'); // 成员数
     $room_id    = input('room_id'); //群ID
     $joinable_wc    = input('joinable/d'); // 企微是否能进
@@ -143,7 +145,9 @@ class Index extends CommonController
     $isjoin = input('isjoin/d');
     $error       = input('error');    // 错误信息
     $manager_id = input('manager_id/d');
-    $this->assertNotEmpty($id, $rid);
+    var_dump($name);
+
+    $this->assertNotEmpty($id, $rid, $manager_id);
     $this->setEmptyStringToNull($members, $status);
 
 
@@ -164,7 +168,8 @@ class Index extends CommonController
       $joinable_wx = $joinable_wc == 3 ? 3 : 1;
       $this->db->name('entrance')->where('id', $id)->update([
         'members'       => $members,
-        // 'name'       => $name,
+        'name'       => $name,
+        // 'avatar'       => $avatar,
         'joinable_wc'       => $joinable_wc,
         'joinable_wx'       => $joinable_wx,
         'status'        => $status,
@@ -194,7 +199,7 @@ class Index extends CommonController
   public function test1()
   {
     try {
-      $data = $this->db->name('qrcode')->where('user_id', '<>', null)->where('provider_id', null)->update(['user_id' => null, 'provider_id' => 1]);
+      $data = $this->db->name('entrance')->where('user_id', '<>', null)->where('provider_id', null)->update(['user_id' => null, 'provider_id' => 1]);
       // var_dump($data);
 
 

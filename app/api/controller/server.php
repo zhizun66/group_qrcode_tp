@@ -133,12 +133,12 @@ class server extends CommonController
     $this->db->startTrans();
     try {
       //同一个群 从不同活码里解析出来的url是不一样的 但可以通过头像url来判断唯一性
-      if ($this->db->name('entrance')->where('avatar', $avatar)->findOrEmpty()) {
+      if ($this->db->name('entrance')->where('qr', $qr)->findOrEmpty()) {
         $this->db->name('entrance')
           ->where('avatar', $avatar)
           ->update([
             'name'          => $name,
-            'qr'            => $qr,
+            'avatar'            => $avatar,
             'im'           => 'gen/' . basename($path),
             'expire_date'   => $expire,
           ]);

@@ -40,7 +40,7 @@ class Qrcode extends CommonController
 
       $subData = Db::name('entrance')->alias('e')
         ->where('e.qrcode_id', $item['id'])
-        ->where('e.expire_date', '>=', $this->db->raw('NOW()'))
+        //->where('e.expire_date', '>=', $this->db->raw('NOW()'))
         ->column("e.id,e.avatar,e.name,e.members,e.qr,e.expire_date,e.joinable_wc,e.add_time");
       $item['entrance'] = $subData;
     }

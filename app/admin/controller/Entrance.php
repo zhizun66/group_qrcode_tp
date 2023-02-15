@@ -16,7 +16,7 @@ class Entrance extends CommonController
     // $tags = input('tags/a');
     $type = input('type/d');
     $group_name = input('group_name');
-    $joinable = input('joinable/d');
+    $joinable_wc = input('joinable_wc/d');
     $status = input('status/d');
     // $sql = $this->db->name('buy')->where('add_time', '>', $this->db->raw('DATE_SUB(NOW(),INTERVAL 1 MONTH)'))->field('id,entrance_id,user_id')->buildSql();
     $sql = $this->db->name('buy')->field('id,entrance_id,user_id')->buildSql();
@@ -37,9 +37,9 @@ class Entrance extends CommonController
     if (!empty($type)) {
       $query->where('type', $type);
     }
-    if (!empty($joinable)) {
-      $joinable = $joinable - 1;
-      $query->where('joinable_wc', $joinable);
+    if (!empty($joinable_wc)) {
+      $joinable_wc = $joinable_wc - 1;
+      $query->where('joinable_wc', $joinable_wc);
     }
     if (!empty($status)) {
       $status = $status - 1;
@@ -148,18 +148,18 @@ class Entrance extends CommonController
   }
 
   // 更改状态
-  public function itemStatus(): Json
+  public function itemJoinablewc(): Json
   {
     $entranceId = input('post.eid/d');
-    $status = input('status/d');
-    $this->assertNotNull($entranceId, $status);
+    $joinable_wc = input('joinable_wc/d');
+    $this->assertNotNull($entranceId, $joinable_wc);
 
-    if (!in_array($status, [0, 1, 2, 3])) {
+    if (!in_array($joinable_wc, [0, 1, 2, 3])) {
       return $this->errorJson();
     }
 
     try {
-      $this->db->name('entrance')->where('id', $entranceId)->update(['status' => $status]);
+      $this->db->name('entrance')->where('id', $entranceId)->update(['joinable_wc' => $joinable_wc]);
       return $this->successJson();
     } catch (Exception) {
       return $this->errorJson();

@@ -69,7 +69,7 @@ class Qrcode extends CommonController
     //   return $this->errorJson(3, '活码已存在');
     // }
 
-    // 标签去重
+
     $data['failed'] = 0;
     $data['success'] = 0;
     $qrcodeData = [];

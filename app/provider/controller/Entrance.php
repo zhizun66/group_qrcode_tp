@@ -8,14 +8,17 @@ use chillerlan\QRCode\QROptions;
 use Exception;
 use think\facade\Filesystem;
 use think\response\Json;
+use think\helper\Str;
 
 class Entrance extends CommonController
 {
   public function index(): Json
   {
     $company = input('company');
+    $joinable_wc = input('joinable_wc/d');
+    $expire = input('expire/d');
     $query = $this->db->name('entrance')->alias('e')
-      ->leftJoin('buy b', 'b.entrance_id=e.id')
+      // ->leftJoin('buy b', 'b.entrance_id=e.id')
       // ->leftJoin('tag t', 'FIND_IN_SET(t.id,e.tags)')
       ->group('e.id');
 
@@ -23,49 +26,38 @@ class Entrance extends CommonController
       $query->whereLike('e.company', "%{$company}%");
     }
 
+    if (!empty($joinable_wc)) {
+      $joinable_wc = $joinable_wc - 1;
+      $query->where('joinable_wc', $joinable_wc);
+    }
+    if (!empty($expire)) {
+      if ($expire == 1) {
+        $query->where('e.expire_date', '>=', $this->db->raw('NOW()'));
+      } elseif ($expire == 2) {
+        $query->where('e.expire_date', '<', $this->db->raw('NOW()'));
+      }
+    }
+    $total = $query->where('provider_id', $this->provider['id'])->count();
     $data = $query->where('provider_id', $this->provider['id'])
       ->order('e.id', 'DESC')
       ->page($this->page, $this->pageSize)
-      ->column("e.id,e.qrcode_id,e.name,e.avatar,e.expire_date,e.members,e.im,e.hide,e.add_time,e.company,e.type,COUNT(DISTINCT b.id) buy_cnt,e.status");
+      ->column("e.id,e.qrcode_id,e.name,e.avatar,e.expire_date,e.members,e.im,e.hide,e.add_time,e.company,e.type,e.joinable_wc,e.error_msg"); //COUNT(DISTINCT b.id) buy_cnt
 
     foreach ($data as &$item) {
       $item['im'] = $item['im'] ? $this->request->domain(true) . '/storage/' . $item['im'] : null;
     }
 
-    $total = $query->count();
+
 
     return $this->successJson($this->paginate($data, $total));
   }
 
   public function upload(): Json
   {
-    //$uid = input('uid');
-    // $tags = input('tags');
+
     $company = input('company');
-    // $area = input('area') ?? [];
-    // $name = input('name');
-    // $remark = input('remark');
-    // $members = input('members');
-    // $expire = input('expire');
-    // $price = input('price/d');
     $type = min(max(input('type/d', 1), 1), 2);
-    // $limit = input('limit/d');
-
-    // $area = empty($area) ? [] : explode(',', $area);
-    // $area = array_map(function ($item) {
-    //   return $item === 'all' ? null : $item;
-    // }, $area);
-
-    // $tags = empty($tags) ? [] : explode(',', $tags);
-    // $tags = array_unique($tags);
-
-//    $uidArr = explode(',', $uid);
-//
-//    $qrArr = array_map(function ($uid) {
-//      return input('decode_' . $uid);
-//    }, $uidArr);
-
-      $qrArr = input('decode/a') ?? [];
+    $qrArr = input('decode/a') ?? [];
 
     // 检测群码是否重复
     if (count(array_unique($qrArr)) < count($qrArr)) {
@@ -73,60 +65,63 @@ class Entrance extends CommonController
     }
 
     // 检测群码是否存在
-    if ($this->db->name('entrance')->whereIn('qr', $qrArr)->value('id')) {
-      return $this->errorJson(2, '群码已存在');
-    }
+    // if ($this->db->name('entrance')->whereIn('qr', $qrArr)->value('id')) {
+    //   return $this->errorJson(2, '群码已存在');
+    // }
 
-    if (empty($price)) {
-      $price = $this->getSysSetting('entrance_price');
-    }
-    if (empty($limit)) {
-      $limit = $this->getSysSetting('max_buy_times');
-    }
+    // if (empty($price)) {
+    //   $price = $this->getSysSetting('entrance_price');
+    // }
+    // if (empty($limit)) {
+    //   $limit = $this->getSysSetting('max_buy_times');
+    // }
 
     try {
+      $data['failed'] = 0;
+      $data['success'] = 0;
       $entranceData = [];
+      $qrcodeData = [];
       foreach ($qrArr as $qr) {
-        //$qr = input('decode_' . $uid, '');
+        // var_dump($qr);
         // 生成二维码
-        $path = tempnam($this->app->getRootPath() . 'public/storage/gen', '') . '.png';
-        $options = new QROptions(['scale' => 10]);
-        (new QRcode($options))->render($qr, $path);
+        if (Str::contains($qr, 'c.weixin.com/g')) {
 
-        /*$file = $this->request->file('qrcode_' . $uid);
-        try {
-          validate(['image' => 'fileSize:1024|fileExt:jpg,jpeg,png'])->check($file);
-        } catch (Exception $e) {
-          return $this->errorJson(-3, $e->getMessage());
-        }*/
+          $path = $this->app->getRootPath() . 'public/storage/gen/' . Str::substr($qr, 23) . '.png';
+          $options = new QROptions(['scale' => 10, 'imageTransparent' => false]);
+          (new QRcode($options))->render($qr, $path);
 
+          $id = $this->db->name('entrance')->where('qr', $qr)->value('id');
+          if (empty($id)) {
+            $data['success']++;
+            $entranceData[] = [
+              'provider_id'   => $this->provider['id'],
+              'qr'            => $qr,
+              'im'           => 'gen/' . basename($path),
+              'expire_date'   => date('Y-m-d H:i:s', time() + 604800),
+              'company'       => empty($company) ? null : $company,
+              'type'          => $type,
+            ];
+          } else {
+            $data['failed']++;
+          }
+        } elseif (Str::contains($qr, 'work.weixin.qq.com/gm')) {
 
-
-        // $saveName = Filesystem::disk('public')->putFile('entrance', $file);
-
-        $entranceData[] = [
-          'provider_id'   => $this->provider['id'],
-          // 'name'          => empty($name) ? null : $name,
-          // 'members'       => empty($members) ? null : $members,
-          'qr'            => $qr,
-          // 'im'            => $saveName,
-          'im'           => 'gen/' . basename($path),
-          // 'expire_date'   => empty($expire) ? null : $expire,
-          // 'price'         => $price,
-          'company'       => empty($company) ? null : $company,
-          // 'province'      => $area[0] ?? null,
-          // 'city'          => $area[1] ?? null,
-          // 'district'      => $area[2] ?? null,
-          // 'remark'        => empty($remark) ? null : $remark,
-          // 'tags'          => implode(',', $tags),
-          'type'          => $type,
-            'avatar' => 'gen/' . basename($path)
-          // 'limit'         => $limit
-        ];
+          $id = $this->db->name('qrcode')->where('code', $qr)->value('id');
+          if (empty($id)) {
+            $data['success']++;
+            $qrcodeData[] = [
+              'provider_id'   => $this->provider['id'],
+              'code'          => $qr,
+              'company'       => $company,
+            ];
+          } else {
+            $data['failed']++;
+          }
+        }
       }
-
       $this->db->name('entrance')->insertAll($entranceData);
-      return $this->successJson();
+      $this->db->name('qrcode')->insertAll($qrcodeData);
+      return $this->successJson(null, '成功' . $data['success'] . '个,失败' . $data['failed'] . '个');
     } catch (Exception $e) {
       return $this->errorJson(-1, $e->getMessage());
     }
