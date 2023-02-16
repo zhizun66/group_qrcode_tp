@@ -259,3 +259,14 @@
 [2023-02-16T17:38:51+08:00][sql] SHOW FULL COLUMNS FROM `wk_entrance` [ RunTime:0.101016s ]
 [2023-02-16T17:38:51+08:00][sql] SELECT COUNT(*) AS think_count FROM ( SELECT count(*) AS think_count FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN ( SELECT `id`,`entrance_id`,`user_id` FROM `wk_buy` ) `b2` ON `b2`.`entrance_id`=`e`.`id` WHERE  `e`.`expire_date` >= NOW() GROUP BY `e`.`id` ) `_group_count_` LIMIT 1 [ RunTime:0.358835s ]
 [2023-02-16T17:38:51+08:00][sql] SELECT `e`.`id`,`e`.`qrcode_id`,`e`.`name`,`e`.`avatar`,`e`.`expire_date`,`e`.`members`,`e`.`qr`,`e`.`im`,`e`.`hide`,`e`.`update_time`,`e`.`add_time`,`e`.`company`,`e`.`status`,`e`.`joinable_wc`,`e`.`error_msg`,`e`.`source`,`e`.`type`,COUNT(DISTINCT b.id) buy_cnt,COUNT(DISTINCT b2.id) buy_cnt_month FROM `wk_entrance` `e` LEFT JOIN `wk_buy` `b` ON `b`.`entrance_id`=`e`.`id` LEFT JOIN ( SELECT `id`,`entrance_id`,`user_id` FROM `wk_buy` ) `b2` ON `b2`.`entrance_id`=`e`.`id` WHERE  `e`.`expire_date` >= NOW() GROUP BY `e`.`id` ORDER BY `e`.`id` DESC LIMIT 37360,20 [ RunTime:0.405602s ]
+[2023-02-16T18:19:18+08:00][sql] CONNECT:[ UseTime:0.131676s ] mysql:host=88.218.194.8;port=3306;dbname=webqrcode;charset=utf8mb4
+[2023-02-16T18:19:18+08:00][sql] SHOW FULL COLUMNS FROM `wk_manager` [ RunTime:0.095922s ]
+[2023-02-16T18:19:18+08:00][sql] SELECT `id`,`username`,`enable`,`add_time` FROM `wk_manager` WHERE  `enable` = 1 ORDER BY `id` DESC LIMIT 0,20 [ RunTime:0.089958s ]
+[2023-02-16T18:19:18+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_manager` WHERE  `enable` = 1 ORDER BY `id` DESC LIMIT 1 [ RunTime:0.089227s ]
+[2023-02-16T18:19:18+08:00][sql] CONNECT:[ UseTime:0.133136s ] mysql:host=88.218.194.8;port=3306;dbname=webqrcode;charset=utf8mb4
+[2023-02-16T18:19:18+08:00][sql] SHOW FULL COLUMNS FROM `wk_manager` [ RunTime:0.091511s ]
+[2023-02-16T18:19:18+08:00][sql] SELECT `id`,`username`,`enable`,`add_time` FROM `wk_manager` WHERE  `enable` = 0 ORDER BY `id` DESC LIMIT 0,20 [ RunTime:0.087459s ]
+[2023-02-16T18:19:18+08:00][sql] SELECT COUNT(*) AS think_count FROM `wk_manager` WHERE  `enable` = 0 ORDER BY `id` DESC LIMIT 1 [ RunTime:0.086465s ]
+[2023-02-16T18:19:20+08:00][sql] CONNECT:[ UseTime:0.139211s ] mysql:host=88.218.194.8;port=3306;dbname=webqrcode;charset=utf8mb4
+[2023-02-16T18:19:20+08:00][sql] SHOW FULL COLUMNS FROM `wk_manager` [ RunTime:0.097468s ]
+[2023-02-16T18:19:20+08:00][sql] UPDATE `wk_manager`  SET `enable` = 1 , `relogin` = 1  WHERE  `id` = 4 [ RunTime:0.094018s ]
