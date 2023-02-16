@@ -158,7 +158,7 @@ class Index extends CommonController
     }
     $EntranceInfo = $this->db->name('entrance')->where('id', $id)
       // ->where('status', 0)
-      ->field('user_id,provider_id')
+      ->field('user_id,provider_id,name')
       ->findOrFail();
     if (empty($EntranceInfo)) {
       return $this->errorJson(1, '群码ID不存在');
@@ -168,7 +168,7 @@ class Index extends CommonController
       $joinable_wx = $joinable_wc == 3 ? 3 : 1;
       $this->db->name('entrance')->where('id', $id)->update([
         'members'       => $members,
-        'name'       => $name,
+        'name'       => $name == null ? $EntranceInfo['name'] : $name,
         // 'avatar'       => $avatar,
         'joinable_wc'       => $joinable_wc,
         'joinable_wx'       => $joinable_wx,

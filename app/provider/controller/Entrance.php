@@ -41,7 +41,7 @@ class Entrance extends CommonController
     $data = $query->where('provider_id', $this->provider['id'])
       ->order('e.id', 'DESC')
       ->page($this->page, $this->pageSize)
-      ->column("e.id,e.qrcode_id,e.name,e.avatar,e.expire_date,e.members,e.im,e.hide,e.add_time,e.company,e.type,e.joinable_wc,e.error_msg"); //COUNT(DISTINCT b.id) buy_cnt
+      ->column("e.id,e.qrcode_id,e.name,e.avatar,e.expire_date,e.members,e.im,e.hide,e.add_time,e.company,e.type,e.joinable_wc,e.error_msg,e.source"); //COUNT(DISTINCT b.id) buy_cnt
 
     foreach ($data as &$item) {
       $item['im'] = $item['im'] ? $this->request->domain(true) . '/storage/' . $item['im'] : null;
@@ -60,25 +60,22 @@ class Entrance extends CommonController
     $qrArr = input('decode/a') ?? [];
 
     // 检测群码是否重复
-    if (count(array_unique($qrArr)) < count($qrArr)) {
-      return $this->errorJson(1, '包含重复群码');
-    }
-
+    // if (count(array_unique($qrArr)) < count($qrArr)) {
+    //   return $this->errorJson(1, '包含重复群码');
+    // }
+    // 二维码去重
+    $qrArr = array_unique($qrArr);
+    var_dump(count($qrArr));
+    die;
     // 检测群码是否存在
     // if ($this->db->name('entrance')->whereIn('qr', $qrArr)->value('id')) {
     //   return $this->errorJson(2, '群码已存在');
     // }
 
-    // if (empty($price)) {
-    //   $price = $this->getSysSetting('entrance_price');
-    // }
-    // if (empty($limit)) {
-    //   $limit = $this->getSysSetting('max_buy_times');
-    // }
-
     try {
       $data['failed'] = 0;
       $data['success'] = 0;
+      $data['exists'] = 0;
       $entranceData = [];
       $qrcodeData = [];
       foreach ($qrArr as $qr) {
@@ -96,13 +93,14 @@ class Entrance extends CommonController
             $entranceData[] = [
               'provider_id'   => $this->provider['id'],
               'qr'            => $qr,
-              'im'           => 'gen/' . basename($path),
+              'avatar'        => 'gen/' . basename($path),
+              'im'            => 'gen/' . basename($path),
               'expire_date'   => date('Y-m-d H:i:s', time() + 604800),
               'company'       => empty($company) ? null : $company,
               'type'          => $type,
             ];
           } else {
-            $data['failed']++;
+            $data['exists']++;
           }
         } elseif (Str::contains($qr, 'work.weixin.qq.com/gm')) {
 
@@ -115,13 +113,15 @@ class Entrance extends CommonController
               'company'       => $company,
             ];
           } else {
-            $data['failed']++;
+            $data['exists']++;
           }
+        } else {
+          $data['failed']++;
         }
       }
       $this->db->name('entrance')->insertAll($entranceData);
       $this->db->name('qrcode')->insertAll($qrcodeData);
-      return $this->successJson(null, '成功' . $data['success'] . '个,失败' . $data['failed'] . '个');
+      return $this->successJson(null, '成功' . $data['success'] . '个,失败' . $data['failed'] . '个,已存在' . $data['exists'] . '个');
     } catch (Exception $e) {
       return $this->errorJson(-1, $e->getMessage());
     }

@@ -66,7 +66,7 @@ class Entrance extends CommonController
     $tempPath = tempnam(sys_get_temp_dir(), 'zip_') . '.zip';
     $zip->open($tempPath, ZipArchive::CREATE);
     foreach ($data as $item) {
-      $path = $this->app->getRootPath() . 'public/storage/' . $item['im'];
+      $path = $this->app->getRootPath() . 'public/storage/gen/' . $item['im'];
       $ext = pathinfo($path, PATHINFO_EXTENSION);
       $entry = $item['id'] . '.' . $ext;
       $zip->addFile($path, $entry);

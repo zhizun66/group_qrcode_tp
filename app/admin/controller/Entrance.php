@@ -51,7 +51,7 @@ class Entrance extends CommonController
     $data = $query->order('e.id', 'DESC')
       //没到期的
       ->page($this->page, $this->pageSize)
-      ->column("e.id,e.qrcode_id,e.name,e.avatar,e.expire_date,e.members,e.qr,e.im,e.hide,e.update_time,e.add_time,e.company,e.status,e.joinable_wc,e.error_msg,e.type,COUNT(DISTINCT b.id) buy_cnt,COUNT(DISTINCT b2.id) buy_cnt_month");
+      ->column("e.id,e.qrcode_id,e.name,e.avatar,e.expire_date,e.members,e.qr,e.im,e.hide,e.update_time,e.add_time,e.company,e.status,e.joinable_wc,e.error_msg,e.source,e.type,COUNT(DISTINCT b.id) buy_cnt,COUNT(DISTINCT b2.id) buy_cnt_month");
 
     foreach ($data as &$item) {
       $item['im'] = $this->request->domain(true) . '/storage/' . $item['im'];
